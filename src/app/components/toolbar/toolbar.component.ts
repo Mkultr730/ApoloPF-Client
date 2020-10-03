@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { LoginService } from '../auth/login.service';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-toolbar',
@@ -11,11 +11,11 @@ export class ToolbarComponent implements OnInit {
   user: firebase.User
 
   constructor(
-    private loginService: LoginService
+    private authService: AuthService
   ) { }
 
   ngOnInit(): void {
-    this.loginService.getLoggedUser()
+    this.authService.getLoggedUser()
       .subscribe(user => {
         this.user = user;
       })

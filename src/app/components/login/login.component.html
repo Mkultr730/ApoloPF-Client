@@ -1,0 +1,17 @@
+<h3>User Logged {{ user?.displayName }} </h3>
+<button *ngIf="!user" (click)="signup('xd@xd.com','123456',null,'prueba')">
+  Registrar 
+</button>
+<button *ngIf="!user" (click)="signin('xd@xd.com','123456')">
+  Login 
+</button>
+<button *ngIf="!user" (click)="googleSignin()">
+  Login with Google
+</button>
+<button *ngIf="!user" (click)="msSignin()">
+  Login with MS
+</button>
+
+<button *ngIf="user" (click)="logout()">
+  Logout
+</button>

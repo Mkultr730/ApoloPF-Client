@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
-import { LoginService } from '../login.service';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -12,7 +12,7 @@ export class LoginComponent implements OnInit {
   user: firebase.User;
 
   constructor(
-    private service: LoginService,
+    private service: AuthService,
     private afAuth: AngularFireAuth
   ) { }
 
@@ -24,11 +24,23 @@ export class LoginComponent implements OnInit {
       });
   }
 
-  loginGoogle() {
+  googleSignin() {
     console.log('Login...');
-    this.service.loginGoogle();
+    this.service.googleSignin();
   }
 
+  msSignin() {
+    console.log('Login...');
+    this.service.msSignin();
+  }
+  signin(email,pwd) {
+    console.log('Login...');
+    this.service.signin(email,pwd);
+  }
+  signup(email,pwd,photoURL,name){
+    console.log('Resgistrando...');
+    this.service.signup(email,pwd,photoURL,name)
+  }
   logout(){
     this.service.logout()
   }
