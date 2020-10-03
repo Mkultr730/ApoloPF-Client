@@ -5,17 +5,28 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+import { environment } from '../environments/environment'
+
 import { MatButtonModule } from '@angular/material/button';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { LoginComponent } from './auth/login/login.component'
+import { MaterialModule } from './material-module';
+import { ToolbarComponent } from './toolbar/toolbar.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LoginComponent,
+    ToolbarComponent
   ],
   imports: [
     BrowserModule,
+    MaterialModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MatButtonModule
+    AngularFireModule.initializeApp( environment.firebaseConfig ),
+    AngularFireAuthModule
   ],
   providers: [],
   bootstrap: [AppComponent]

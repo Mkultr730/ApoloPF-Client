@@ -3,7 +3,17 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  firebaseConfig: {
+    apiKey: "AIzaSyCRmOVSKlkW6Ut2PRpe7gZLL7Ow8K4PDTA",
+    authDomain: "apolo-dua.firebaseapp.com",
+    databaseURL: "https://apolo-dua.firebaseio.com",
+    projectId: "apolo-dua",
+    storageBucket: "apolo-dua.appspot.com",
+    messagingSenderId: "758745648457",
+    appId: "1:758745648457:web:ff0ed6943980b4cbf09e98",
+    measurementId: "G-32S2PHVZ12"
+  }
 };
 
 /*
