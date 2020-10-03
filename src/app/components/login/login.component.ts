@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AuthService } from '../../services/auth.service';
+import { FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -10,6 +11,8 @@ import { AuthService } from '../../services/auth.service';
 export class LoginComponent implements OnInit {
 
   user: firebase.User;
+  email = new FormControl('', [Validators.required, Validators.email]);
+  hide = true;
 
   constructor(
     private service: AuthService,
@@ -19,7 +22,6 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
     this.service.getLoggedUser()
       .subscribe( user => {
-        console.log(user);
         this.user = user;
       });
   }
@@ -43,6 +45,13 @@ export class LoginComponent implements OnInit {
   }
   logout(){
     this.service.logout()
+  }
+
+  getErrorMessage() {
+    if (this.email.hasError('required')) {
+      return 'You must enter a value';
+    }
+    return this.email.hasError('email') ? 'Not a valid email' : '';
   }
 
 }

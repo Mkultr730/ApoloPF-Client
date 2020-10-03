@@ -1,17 +1,48 @@
-<h3>User Logged {{ user?.displayName }} </h3>
-<button *ngIf="!user" (click)="signup('xd@xd.com','123456',null,'prueba')">
-  Registrar 
-</button>
-<button *ngIf="!user" (click)="signin('xd@xd.com','123456')">
-  Login 
-</button>
-<button *ngIf="!user" (click)="googleSignin()">
-  Login with Google
-</button>
-<button *ngIf="!user" (click)="msSignin()">
-  Login with MS
-</button>
+<mat-grid-list cols="12" rowHeight="100%">
+  <mat-grid-tile colspan="8">
+    1
+  </mat-grid-tile>
+  <mat-grid-tile class="login-layout" colspan="4">
+    <mat-card flex>
+      <mat-card-title>
+        Login
+      </mat-card-title>
+      <mat-card-content style="display: flex; flex-direction: column;">
 
-<button *ngIf="user" (click)="logout()">
-  Logout
-</button>
+        <mat-form-field>
+          <mat-label>Enter your email</mat-label>
+          <input matInput placeholder="pat@example.com" [formControl]="email" required />
+          <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Enter your password</mat-label>
+          <input matInput [type]="hide ? 'password' : 'text'">
+          <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
+        </mat-form-field>
+
+        <button mat-button color="primary" *ngIf="!user" (click)="signup('xd@xd.com','123456',null,'prueba')">
+          Registrar
+        </button>
+        <button *ngIf="!user" (click)="signin('xd@xd.com','123456')">
+          Login
+        </button>
+        <button *ngIf="!user" (click)="googleSignin()">
+          Login with Google
+        </button>
+        <button *ngIf="!user" (click)="msSignin()">
+          Login with MS
+        </button>
+
+        <button *ngIf="user" (click)="logout()">
+          Logout
+        </button>
+      </mat-card-content>
+      <mat-card-content>
+
+      </mat-card-content>
+    </mat-card>
+  </mat-grid-tile>
+</mat-grid-list>
