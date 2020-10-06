@@ -35,16 +35,16 @@ export class LoginComponent implements OnInit {
     console.log('Login...');
     this.service.msSignin();
   }
-  signin(email,pwd) {
+  signin(email, pwd) {
     console.log('Login...');
-    this.service.signin(email,pwd);
+    this.service.signin(email, pwd);
   }
-  signup(email,pwd,photoURL,name){
+  signup(email, pwd, photoURL, name){
     console.log('Resgistrando...');
-    this.service.signup(email,pwd,photoURL,name)
+    this.service.signup(email, pwd, photoURL, name);
   }
   logout(){
-    this.service.logout()
+    this.service.logout();
   }
 
   getErrorMessage() {
