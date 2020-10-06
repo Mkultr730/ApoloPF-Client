@@ -1,55 +1,55 @@
-<mat-grid-list cols="12" rowHeight="100%">
-  <mat-grid-tile colspan="8">
-    1
-  </mat-grid-tile>
-  <mat-grid-tile class="login-layout" colspan="4">
-    <mat-card flex>
-      <mat-card-title>
-        Login
-      </mat-card-title>
-      <mat-card-content style="display: flex; flex-direction: column;">
+  <div class="row" style="height: 100%; margin: 0px;">
+    <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8 left-login"></div>
+    <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 text-align d-flex" style="background: grey; align-items: center;">
+      <div class="custom-card">
+        <mat-card>
+          <div class="row">
+            <div class="col d-flex">
+              <img class="image-logo" src="assets/icons/logo_Apolo.svg" alt="">
+            </div>
+          </div>
+        <mat-card-content style="display: flex; flex-direction: column;">
 
-        <mat-form-field>
-          <mat-label>Enter your email</mat-label>
-          <input matInput placeholder="pat@example.com" [formControl]="email" required />
-          <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
-        </mat-form-field>
+          <mat-form-field>
+            <mat-label>Correo Electrónico</mat-label>
+            <input matInput placeholder="pat@ejemplo.com" [formControl]="email" required />
+            <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+          </mat-form-field>
 
-        <mat-form-field>
-          <mat-label>Enter your password</mat-label>
-          <input matInput [type]="hide ? 'password' : 'text'">
-          <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          <mat-form-field>
+            <mat-label>Contraseña</mat-label>
+            <input matInput [type]="hide ? 'password' : 'text'">
+            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+          </mat-form-field>
+
+          <button mat-raised-button color="primary" *ngIf="!user" (click)="signin('xd@xd.com','123456')">
+            Login
           </button>
-        </mat-form-field>
+          <br>
+          <div class="row m-auto">
+            <h4>O entra usando</h4>
+          </div>
+          <div class="row d-flex m-auto">
+            <div class="col">
+              <button class="custom-button" mat-fab *ngIf="!user" (click)="googleSignin()">
+                <mat-icon><img src="assets/icons/google-icon.svg" alt=""></mat-icon>
+              </button>
+            </div>
+            <div class="col">
+              <button class="custom-button" mat-fab *ngIf="!user" (click)="msSignin()">
+                <mat-icon><img src="assets/icons/microsoft-icon.svg" alt=""></mat-icon>
+              </button>
+            </div>
+          </div>
+        </mat-card-content>
+        <mat-card-content>
 
-        <button mat-button color="primary" *ngIf="!user" (click)="signup('xd@xd.com','123456',null,'prueba')">
-          Registrar
-        </button>
-        <button *ngIf="!user" (click)="signin('xd@xd.com','123456')">
-          Login
-        </button>
-        <button *ngIf="!user" (click)="googleSignin()">
-          Login with Google
-        </button>
-        <button *ngIf="!user" (click)="msSignin()">
-          Login with MS
-        </button>
-
-        <button *ngIf="user" (click)="logout()">
-          Logout
-        </button>
-      </mat-card-content>
-      <mat-card-content>
-
-      </mat-card-content>
-    </mat-card>
-  </mat-grid-tile>
-</mat-grid-list>
-
-  <div class="row">
-    <div class="col-12 col-sm-12 col-md-7 col-lg-8 col-xl-8" style="background: black; ">1/2</div>
-    <div class="col-12 col-sm-12 col-md-5 col-lg-4 col-xl-4" style="background: green;">1/2</div>
+        </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
   </div>
 
 

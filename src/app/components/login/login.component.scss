@@ -6,3 +6,34 @@ mat-grid-tile {
   background: #FFFFFF;
 }
 
+.custom-card {
+  margin: auto;
+
+  mat-card {
+    padding: 3rem;
+  }
+}
+
+.image-logo {
+  width: 6rem;
+  height: auto;
+  margin: auto;
+}
+
+h4 {
+  font-family: Roboto, sans-serif;
+}
+
+.custom-button {
+  background: #FFFFFF;
+
+  img {
+    display: flex;
+  }
+}
+
+@media screen and(max-width: 900px) {
+  .left-login {
+    display: none;
+  }
+}
