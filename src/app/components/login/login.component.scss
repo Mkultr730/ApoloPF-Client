@@ -1,5 +1,6 @@
-mat-grid-tile {
-  background: lightblue;
+.login-body {
+  background-image: url('/assets/images/cisneros-background.jpg');
+  background-size: 73%;
 }
 
 .login-layout {
@@ -18,6 +19,7 @@ mat-grid-tile {
   width: 6rem;
   height: auto;
   margin: auto;
+  margin-bottom: 1rem;
 }
 
 h4 {
@@ -30,6 +32,11 @@ h4 {
   img {
     display: flex;
   }
+}
+
+.right-login {
+  background: rgba($color: grey, $alpha: 0.8);
+  align-items: center;
 }
 
 @media screen and(max-width: 900px) {
