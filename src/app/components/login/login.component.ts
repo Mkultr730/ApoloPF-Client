@@ -12,7 +12,9 @@ export class LoginComponent implements OnInit {
 
   user: firebase.User;
   email = new FormControl('', [Validators.required, Validators.email]);
+  password:String = ''
   hide = true;
+  casa:string = '';
 
   constructor(
     private service: AuthService,
@@ -35,9 +37,9 @@ export class LoginComponent implements OnInit {
     console.log('Login...');
     this.service.msSignin();
   }
-  signin(email,pwd) {
-    console.log('Login...');
-    this.service.signin(email,pwd);
+  signin() {
+    console.log(this.email.value, this.password)
+    this.service.signin(this.email.value,this.password);
   }
   signup(email,pwd,photoURL,name){
     console.log('Resgistrando...');

@@ -51,6 +51,7 @@ export class AuthService {
 
   async signin(email,pwd) {
     const credential = await this.afAuth.signInWithEmailAndPassword(email,pwd);
+    console.log(credential)
     credential.user['authType']=3;
     return this.updateUserData(credential.user);
   }
@@ -58,7 +59,7 @@ export class AuthService {
     const credential = await this.afAuth.createUserWithEmailAndPassword(email,pwd);
     await credential.user.updateProfile({
       displayName: name,
-      photoURL: photoURL   
+      photoURL: photoURL
     })
     credential.user['authType']=3;
     return this.updateUserData(credential.user);
@@ -75,18 +76,18 @@ export class AuthService {
     // Sets user data to firestore on login
     const userRef: AngularFirestoreDocument<User> = this.afs.doc(`users/${user.uid}`);
 
-    const data = { 
-      uid: user.uid, 
-      email: user.email, 
-      displayName: user.displayName, 
+    const data = {
+      uid: user.uid,
+      email: user.email,
+      displayName: user.displayName,
       photoURL: user.photoURL,
       authType: user.authType
-    } 
+    }
 
     return userRef.set(data, { merge: true })
   }
 
-  
+
   async signOut() {
     await this.afAuth.signOut();
     //this.router.navigate(['/']);
