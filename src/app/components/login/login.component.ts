@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AuthService } from '../../services/auth.service';
 import { FormControl, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -18,35 +19,34 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private service: AuthService,
-    private afAuth: AngularFireAuth
+    private afAuth: AngularFireAuth,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
     this.service.getLoggedUser()
       .subscribe( user => {
         this.user = user;
+        if (this.user) { this.router.navigate([ '/' ]); }
       });
   }
 
-  googleSignin() {
+  async googleSignin() {
     console.log('Login...');
-    this.service.googleSignin();
+    await this.service.googleSignin();
+    if (this.user) { this.router.navigate([ '/' ]); }
   }
 
-  msSignin() {
+  async msSignin() {
     console.log('Login...');
-    this.service.msSignin();
+    await this.service.msSignin();
+    if (this.user) { this.router.navigate([ '/' ]); }
   }
-  signin() {
-    console.log(this.email.value, this.password)
-    this.service.signin(this.email.value,this.password);
-  }
-  signup(email,pwd,photoURL,name){
-    console.log('Resgistrando...');
-    this.service.signup(email,pwd,photoURL,name)
-  }
-  logout(){
-    this.service.logout()
+
+  async signin() {
+    console.log('Login...');
+    await this.service.signin(this.email.value, this.password);
+    if (this.user) { this.router.navigate([ '/' ]); }
   }
 
   getErrorMessage() {
