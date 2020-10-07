@@ -38,20 +38,20 @@ export class AuthService {
     console.log('Redirecting to Google login Provider');
     const provider = new auth.GoogleAuthProvider();
     const credential = await this.afAuth.signInWithPopup(provider);
-    credential.user.authType = 1;
+    credential.user['authType'] = 1;
     return this.updateUserData(credential.user);
   }
   async msSignin() {
     console.log('Redirecting to MS login Provider');
     const provider = new auth.OAuthProvider('microsoft.com');
     const credential = await this.afAuth.signInWithPopup(provider);
-    credential.user.authType = 2;
+    credential.user['authType'] = 2;
     return this.updateUserData(credential.user);
   }
 
   async signin(email, pwd) {
     const credential = await this.afAuth.signInWithEmailAndPassword(email, pwd);
-    credential.user.authType = 3;
+    credential.user['authType'] = 3;
     return this.updateUserData(credential.user);
   }
   async signup(email, pwd, photoURL, name) {
@@ -60,7 +60,7 @@ export class AuthService {
       displayName: name,
       photoURL
     });
-    credential.user.authType = 3;
+    credential.user['authType'] = 3;
     return this.updateUserData(credential.user);
   }
   logout() {
