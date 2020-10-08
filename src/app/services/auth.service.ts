@@ -49,12 +49,12 @@ export class AuthService {
     return this.updateUserData(credential.user);
   }
 
-  async signin(email, pwd) {
+  async signin(email:string, pwd:string) {
     const credential = await this.afAuth.signInWithEmailAndPassword(email, pwd);
     credential.user['authType'] = 3;
     return this.updateUserData(credential.user);
   }
-  async signup(email, pwd, photoURL, name) {
+  async signup(email:string, pwd:string, photoURL:string, name:string) {
     const credential = await this.afAuth.createUserWithEmailAndPassword(email, pwd);
     await credential.user.updateProfile({
       displayName: name,

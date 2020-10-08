@@ -13,7 +13,7 @@ export class LoginComponent implements OnInit {
 
   user: firebase.User;
   email = new FormControl('', [Validators.required, Validators.email]);
-  password:String = ''
+  password:string = ''
   hide = true;
   casa:string = '';
 
