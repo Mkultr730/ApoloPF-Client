@@ -10,6 +10,7 @@ import {
 import { Observable, of } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 import {User} from '../models/user.model';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -21,6 +22,7 @@ export class AuthService {
   constructor(
       private afAuth: AngularFireAuth,
       private afs: AngularFirestore,
+      private router: Router,
   ) {
     this.user$ = this.afAuth.authState.pipe(
       switchMap(user => {
@@ -75,7 +77,7 @@ export class AuthService {
     // Sets user data to firestore on login
     const userRef: AngularFirestoreDocument<User> = this.afs.doc(`users/${user.uid}`);
 
-    const data = {
+    const data: User = {
       uid: user.uid,
       email: user.email,
       displayName: user.displayName,
@@ -89,6 +91,6 @@ export class AuthService {
 
   async signOut() {
     await this.afAuth.signOut();
-    // this.router.navigate(['/']);
+    this.router.navigate(['/']);
   }
 }
