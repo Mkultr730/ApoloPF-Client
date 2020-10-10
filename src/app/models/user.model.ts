@@ -4,4 +4,6 @@ export interface User{
     photoURL?:String;
     role?:Number;
     authType:Number;
+    courses?:String[];
+    Course?:String;
 }
