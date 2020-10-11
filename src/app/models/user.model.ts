@@ -1,9 +1,9 @@
 export interface User{
     uid:string,
     email:string;
-    photoURL?:String;
+    photoURL?:string;
     role?:Number;
     authType:Number;
-    courses?:String[];
-    Course?:String;
+    courses?:string[];
+    Course?:string;
 }
