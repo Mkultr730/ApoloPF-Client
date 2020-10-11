@@ -42,15 +42,58 @@ export class CourseService {
     });
   }
 
-  deleteCourse(courseid: string, Current_YYYY: number, school_YYYY: number) {
-    return new Promise<any>((resolve, reject) => {
-      this.afs
-        .collection(`courses/${new Date().getFullYear()}/${school_YYYY}`).doc(courseid).delete()
-        .then(
-          res => {
-            console.log("doc eliminado")
-          }, err => reject(err));
-    });
+  async deleteCourse(courseid: string, Current_YYYY: number, school_YYYY: number) {
+    const courseRef = this.afs.collection(`courses/${Current_YYYY}/${school_YYYY}`).doc(courseid);
+    let courseinfo: Course;
+
+    await courseRef
+      .get().toPromise()
+      .then((doc) => {
+        courseinfo = doc.data() as Course;
+      })
+    if (courseinfo === undefined) {
+      return "Curso no encontrado"
+    } else {
+      
+      console.log(courseinfo)
+      //const teacherRef = this.afs.collection(`users/`).doc();
+      for (let teacher of courseinfo["teacher"]) {
+        await this.deleteTeacherFromCourse(teacher, courseid, Current_YYYY, school_YYYY);
+      }
+      for (let student of courseinfo["students"]) {
+        await this.deleteStudentFromCourse(student, courseid, Current_YYYY, school_YYYY);
+      }
+      await courseRef.delete().then((res)=>{console.log("Eliminado ")})
+      return "eliminado"
+    }
+  }
+
+  async listCourses(Current_YYYY: number) {
+    let allcourses: any = {}
+    const Academic_year: string[] = ["4th", "5th"]
+    for (let year of Academic_year) {
+      allcourses[year] = [];
+      const courseRef = this.afs.collection(`courses/${Current_YYYY}/${year === "4th" ? "4" : "5"}`);
+      //get all the courses id from the nth year
+      await courseRef
+        .get().toPromise()
+        .then(function (querySnapshot) {
+          //iterate all the couses _nth year_
+          querySnapshot.forEach(async (courseCollection) => {
+            //get coursekey and set it to the custom object
+            const courseKey: string = courseCollection.id;
+            allcourses[year][courseKey] = {};
+            //insert info to the custom object
+            await courseRef.doc(courseKey)
+              .get().toPromise()
+              .then((doc) => {
+                const temp: Course = doc.data() as Course;
+                Object.assign(allcourses[year][courseKey], temp);
+              });
+          });
+        });
+    }
+    return allcourses;
   }
 
   async assingTeacher(teacherid: string, courseid: string, Current_YYYY: number, school_YYYY: number) {
@@ -201,33 +244,6 @@ export class CourseService {
     });
     //deleting course from the student
     await teacherRef.set(studentInfo);
-  }
-  async listCourses(Current_YYYY: number) {
-    let allcourses: any = {}
-    const Academic_year:string[] =["4th","5th"]
-    for (let year of Academic_year){
-      allcourses[year] = [];
-      const courseRef = this.afs.collection(`courses/${Current_YYYY}/${year==="4th"?"4":"5"}`);
-      //get all the courses id from the nth year
-      await courseRef
-      .get().toPromise()
-      .then(function (querySnapshot) {
-        //iterate all the couses _nth year_
-        querySnapshot.forEach(async (courseCollection) => {
-          //get coursekey and set it to the custom object
-          const courseKey:string=courseCollection.id;
-          allcourses[year][courseKey]={};
-          //insert info to the custom object
-          await courseRef.doc(courseKey)
-          .get().toPromise()
-          .then((doc)=>{
-            const temp:Course=doc.data() as Course;
-            Object.assign(allcourses[year][courseKey], temp);
-          });
-        });
-      });
-    }
-    return allcourses;
   }
 
 }
