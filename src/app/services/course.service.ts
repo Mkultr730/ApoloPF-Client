@@ -58,7 +58,7 @@ export class CourseService {
     const courseRef = this.afs.collection(`courses/${Current_YYYY}/${school_YYYY}`).doc(courseid);
     const teacherRef = this.afs.collection(`users/`).doc(teacherid);
     let cursomod: Course;
-    let teacherInfo:User;
+    let teacherInfo: User;
     //get current professors from the course
     await courseRef.get().toPromise().then(function (doc) {
       if (doc.exists) {
@@ -77,9 +77,9 @@ export class CourseService {
     await teacherRef.get().toPromise().then(function (doc) {
       if (doc.exists) {
         teacherInfo = doc.data() as User;
-        console.log(teacherInfo["courses"]===undefined)
-        if(teacherInfo["courses"]===undefined){
-          teacherInfo["courses"]=[]
+        console.log(teacherInfo["courses"] === undefined)
+        if (teacherInfo["courses"] === undefined) {
+          teacherInfo["courses"] = []
         }
         teacherInfo["courses"].push(courseid);
       } else {
@@ -97,7 +97,7 @@ export class CourseService {
     const courseRef = this.afs.collection(`courses/${Current_YYYY}/${school_YYYY}`).doc(courseid);
     const studentRef = this.afs.collection(`users/`).doc(studentid);
     let cursomod: Course;
-    let studentInfo:User;
+    let studentInfo: User;
     //get current info from the course
     await courseRef.get().toPromise().then(function (doc) {
       if (doc.exists) {
@@ -116,7 +116,7 @@ export class CourseService {
     await studentRef.get().toPromise().then(function (doc) {
       if (doc.exists) {
         studentInfo = doc.data() as User;
-        studentInfo["course"]=courseid
+        studentInfo["course"] = courseid
       } else {
         console.log("No such document!");
       }
@@ -132,12 +132,12 @@ export class CourseService {
     const courseRef = this.afs.collection(`courses/${Current_YYYY}/${school_YYYY}`).doc(courseid);
     const teacherRef = this.afs.collection(`users/`).doc(teacherid);
     let cursomod: Course;
-    let teacherInfo:User;
+    let teacherInfo: User;
     await courseRef.get().toPromise().then(function (doc) {
       if (doc.exists) {
         console.log("Document data:", doc.data());
         cursomod = doc.data() as Course;
-        cursomod['teacher']=cursomod['teacher'].filter((uid)=>{return uid!=teacherid})
+        cursomod['teacher'] = cursomod['teacher'].filter((uid) => { return uid != teacherid })
       } else {
         console.log("No such document!");
       }
@@ -150,19 +150,19 @@ export class CourseService {
 
     //get current professor courses
     await teacherRef.get().toPromise().then(function (doc) {
-          if (doc.exists) {
-            teacherInfo = doc.data() as User;
-            console.log(teacherInfo["courses"]===undefined)
-            if(teacherInfo["courses"]===undefined){
-              teacherInfo["courses"]=[]
-            }
-            teacherInfo["courses"]=teacherInfo["courses"].filter((cid)=>{return cid!=courseid})
-          } else {
-            console.log("No such document!");
-          }
-        }).catch(function (error) {
-          console.log("Error getting document:", error);
-        });
+      if (doc.exists) {
+        teacherInfo = doc.data() as User;
+        console.log(teacherInfo["courses"] === undefined)
+        if (teacherInfo["courses"] === undefined) {
+          teacherInfo["courses"] = []
+        }
+        teacherInfo["courses"] = teacherInfo["courses"].filter((cid) => { return cid != courseid })
+      } else {
+        console.log("No such document!");
+      }
+    }).catch(function (error) {
+      console.log("Error getting document:", error);
+    });
     //deleting course from the professor
     await teacherRef.set(teacherInfo);
   }
@@ -172,12 +172,12 @@ export class CourseService {
     const courseRef = this.afs.collection(`courses/${Current_YYYY}/${school_YYYY}`).doc(courseid);
     const teacherRef = this.afs.collection(`users/`).doc(studentid);
     let cursomod: Course;
-    let studentInfo:User;
+    let studentInfo: User;
     await courseRef.get().toPromise().then(function (doc) {
       if (doc.exists) {
         console.log("Document data:", doc.data());
         cursomod = doc.data() as Course;
-        cursomod['students']=cursomod['students'].filter((uid)=>{return uid!=studentid})
+        cursomod['students'] = cursomod['students'].filter((uid) => { return uid != studentid })
       } else {
         console.log("No such document!");
       }
@@ -190,16 +190,44 @@ export class CourseService {
 
     //get student course
     await teacherRef.get().toPromise().then(function (doc) {
-          if (doc.exists) {
-            studentInfo = doc.data() as User;
-            delete studentInfo["course"]
-          } else {
-            console.log("No such document!");
-          }
-        }).catch(function (error) {
-          console.log("Error getting document:", error);
-        });
+      if (doc.exists) {
+        studentInfo = doc.data() as User;
+        delete studentInfo["course"]
+      } else {
+        console.log("No such document!");
+      }
+    }).catch(function (error) {
+      console.log("Error getting document:", error);
+    });
     //deleting course from the student
     await teacherRef.set(studentInfo);
   }
+  async listCourses(Current_YYYY: number) {
+    let allcourses: any = {}
+    const Academic_year:string[] =["4th","5th"]
+    for (let year of Academic_year){
+      allcourses[year] = [];
+      const courseRef = this.afs.collection(`courses/${Current_YYYY}/${year==="4th"?"4":"5"}`);
+      //get all the courses id from the nth year
+      await courseRef
+      .get().toPromise()
+      .then(function (querySnapshot) {
+        //iterate all the couses _nth year_
+        querySnapshot.forEach(async (courseCollection) => {
+          //get coursekey and set it to the custom object
+          const courseKey:string=courseCollection.id;
+          allcourses[year][courseKey]={};
+          //insert info to the custom object
+          await courseRef.doc(courseKey)
+          .get().toPromise()
+          .then((doc)=>{
+            const temp:Course=doc.data() as Course;
+            Object.assign(allcourses[year][courseKey], temp);
+          });
+        });
+      });
+    }
+    return allcourses;
+  }
+
 }
