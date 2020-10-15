@@ -1,0 +1,13 @@
+.custom-button {
+  text-align: center;
+
+  img {
+    display: flex;
+    flex-direction: column;
+    height: 40px;
+  }
+  mat-icon {
+    height: 100%;
+    width: auto;
+  }
+}

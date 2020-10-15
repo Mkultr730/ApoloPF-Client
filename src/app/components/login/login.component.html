@@ -18,13 +18,13 @@
 
           <mat-form-field>
             <mat-label>Contraseña</mat-label>
-            <input matInput [type]="hide ? 'password' : 'text'">
+            <input matInput [type]="hide ? 'password' : 'text'"  [(ngModel)]="password">
             <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
             <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
             </button>
           </mat-form-field>
 
-          <button mat-raised-button color="primary" *ngIf="!user" (click)="signin('xd@xd.com','123456')">
+          <button mat-raised-button color="primary" (click)="signin()">
             Login
           </button>
           <br>
@@ -33,12 +33,12 @@
           </div>
           <div class="row d-flex m-auto">
             <div class="col">
-              <button class="custom-button" mat-fab *ngIf="!user" (click)="googleSignin()">
+              <button class="custom-button" mat-fab (click)="googleSignin()">
                 <mat-icon><img src="assets/icons/google-icon.svg" alt=""></mat-icon>
               </button>
             </div>
             <div class="col">
-              <button class="custom-button" mat-fab *ngIf="!user" (click)="msSignin()">
+              <button class="custom-button" mat-fab (click)="msSignin()">
                 <mat-icon><img src="assets/icons/microsoft-icon.svg" alt=""></mat-icon>
               </button>
             </div>

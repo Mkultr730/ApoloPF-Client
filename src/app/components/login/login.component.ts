@@ -13,7 +13,9 @@ export class LoginComponent implements OnInit {
 
   user: firebase.User;
   email = new FormControl('', [Validators.required, Validators.email]);
+  password:string = ''
   hide = true;
+  casa:string = '';
 
   constructor(
     private service: AuthService,
@@ -41,17 +43,10 @@ export class LoginComponent implements OnInit {
     if (this.user) { this.router.navigate([ '/' ]); }
   }
 
-  async signin(email, pwd) {
+  async signin() {
     console.log('Login...');
-    await this.service.signin(email, pwd);
+    await this.service.signin(this.email.value, this.password);
     if (this.user) { this.router.navigate([ '/' ]); }
-  }
-  signup(email, pwd, photoURL, name){
-    console.log('Resgistrando...');
-    this.service.signup(email, pwd, photoURL, name);
-  }
-  logout(){
-    this.service.logout();
   }
 
   getErrorMessage() {
