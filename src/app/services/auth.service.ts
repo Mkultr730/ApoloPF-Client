@@ -82,12 +82,11 @@ export class AuthService {
       email: user.email,
       displayName: user.displayName,
       photoURL: user.photoURL,
-      authType: user.authType
+      authType: user.authType,
     };
 
     return userRef.set(data, { merge: true });
   }
-
 
   async signOut() {
     await this.afAuth.signOut();
