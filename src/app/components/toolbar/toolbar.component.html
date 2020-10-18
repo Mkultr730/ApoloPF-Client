@@ -1,19 +1,21 @@
-<mat-toolbar
-  id="mainToolbar"
-  color="primary">
-  <mat-toolbar-row>
-    <button mat-icon-button class="custom-button">
-      <mat-icon><img src="/assets/icons/logo_Apolo-light.svg" alt=""></mat-icon>
-    </button>
+<div class="fixed-toolbar">
+  <mat-toolbar
+    id="mainToolbar"
+    color="primary">
+    <mat-toolbar-row>
+      <button mat-icon-button class="custom-button">
+        <mat-icon><img src="/assets/icons/logo_Apolo-light.svg" alt=""></mat-icon>
+      </button>
 
-    <span class="toolbar-spacer"></span>
-    <button
-      mat-mini-fab
-      class="toolbar-avatar"
-      color="primary"
-      [ngStyle]="{ 'background-image': 'url('+user?.photoURL+')' }"
-    >
-    </button>
-  </mat-toolbar-row>
+      <span class="toolbar-spacer"></span>
+      <button
+        mat-mini-fab
+        class="toolbar-avatar"
+        color="primary"
+        [ngStyle]="{ 'background-image': 'url('+user?.photoURL+')' }"
+      >
+      </button>
+    </mat-toolbar-row>
 
-</mat-toolbar>
+  </mat-toolbar>
+</div>

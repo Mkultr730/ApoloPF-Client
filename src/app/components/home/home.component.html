@@ -1,1 +1,78 @@
-<p>home works!</p>
+<app-toolbar></app-toolbar>
+
+<div class="container custom-container">
+  <div class="row">
+    <div class="col-8">
+      <!-- List of Lessons to Display - fix!: Component Needed -->
+      <div class="custom-card" *ngFor="let i of test">
+        <div class="card-title">
+          <h4>LECCIÓN No. {{i}}</h4>
+        </div>
+        <div class="card-content">
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod corrupti voluptates tempore molestiae doloribus deleniti debitis, eaque sint repellendus impedit corporis reiciendis accusantium commodi quos rem fugiat veritatis placeat quae.</p>
+          <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Temporibus dolores libero ad fugit maiores? Tempora magni vero ipsum modi in totam earum, error inventore veniam sapiente ab repudiandae voluptate ut?</p>
+
+          <div class="info">
+            <a>
+              <img src="/assets/icons/CONTENT/magnifying_glass.svg">
+              Más información
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-4">
+
+      <div class="custom-card">
+        <div class="card-title">
+          <h4>
+            Actualizaciones
+          </h4>
+        </div>
+        <div class="card-content">
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae rerum facilis neque vel aliquid repudiandae, laborum eaque tempore eveniet aperiam repellendus fuga? Dignissimos qui nobis voluptate at ipsa ipsam temporibus!</p>
+        </div>
+      </div>
+
+      <div class="custom-card">
+        <div class="card-title">
+          <h4>
+            Meta Diaria
+          </h4>
+        </div>
+        <div class="card-content">
+          <div class="row">
+            <div class="col-4">
+              <img src="/assets/icons/CONTENT/trophy.svg" style="height: 70px; width: auto;">
+            </div>
+            <div class="col-8">
+              <h5>Progreso</h5>
+              <div class="row">
+                <div class="col-9">
+                  <div class="progress">
+                    <div class="progress-bar bg-warning" role="progressbar" style="width: 70%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                </div>
+                <div class="col-2">
+                  7/10
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="custom-card">
+        <div class="card-title">
+          <h4>
+            Notas
+          </h4>
+        </div>
+        <div class="card-content">
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae rerum facilis neque vel aliquid repudiandae, laborum eaque tempore eveniet aperiam repellendus fuga? Dignissimos qui nobis voluptate at ipsa ipsam temporibus!</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
