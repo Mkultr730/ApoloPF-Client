@@ -23,13 +23,21 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
 import { MatMenuModule } from '@angular/material/menu';
 import { HomeComponent } from './components/home/home.component';
+import { ExercisesComponent } from './components/exercises/exercises.component';
+import { GoalComponent } from './components/shared/goal/goal.component';
+import { NotesComponent } from './components/shared/notes/notes.component';
+import { RightInfoComponent } from './components/shared/right-info/right-info.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     ToolbarComponent,
-    HomeComponent
+    HomeComponent,
+    ExercisesComponent,
+    GoalComponent,
+    NotesComponent,
+    RightInfoComponent
   ],
   imports: [
     BrowserModule,
