@@ -8,7 +8,7 @@ import { AuthService } from '../../services/auth.service';
 })
 export class ToolbarComponent implements OnInit {
 
-  user: firebase.User
+  user: firebase.User;
 
   constructor(
     private authService: AuthService

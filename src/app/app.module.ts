@@ -5,11 +5,12 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { environment } from '../environments/environment'
+import { environment } from '../environments/environment';
 
 import { AngularFireModule } from '@angular/fire';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuthModule } from '@angular/fire/auth';
-import { LoginComponent } from './components/login/login.component'
+import { LoginComponent } from './components/login/login.component';
 import { MaterialModule } from './material-module';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -45,6 +46,7 @@ import { RightInfoComponent } from './components/shared/right-info/right-info.co
     AppRoutingModule,
     BrowserAnimationsModule,
     AngularFireModule.initializeApp( environment.firebaseConfig ),
+    AngularFirestoreModule,
     AngularFireAuthModule,
     ReactiveFormsModule,
     LayoutModule,
