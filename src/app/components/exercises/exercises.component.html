@@ -2,9 +2,9 @@
   <div class="row">
     <div class="col-8">
       <!-- List of Lessons to Display - fix!: Component Needed -->
-      <div class="custom-card">
+      <div *ngFor="let e of enunciados" class="custom-card">
         <div class="card-title">
-          <h4>Ejercicio No. 1</h4>
+          <h4>{{ e.payload.doc.data().enunciado }}</h4>
         </div>
         <div class="card-content">
           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod corrupti voluptates tempore molestiae doloribus deleniti debitis, eaque sint repellendus impedit corporis reiciendis accusantium commodi quos rem fugiat veritatis placeat quae.</p>
