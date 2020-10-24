@@ -31,7 +31,7 @@
   display: flex;
   border-radius: 50%;
   height: 170px;
-  width: 170px;
+  min-width: 170px;
   margin: 15px 0;
   cursor: pointer;
 }
@@ -43,8 +43,35 @@
   opacity: 0.4;
 }
 
-.lessons-container {
+.lesson-container {
   display: flex;
   align-items: center;
-  flex-direction: column;
+}
+
+.lesson-info {
+  margin-left: 50px;
+	position: relative;
+	background: #00aabb;
+  border-radius: .4em;
+  padding: 1rem;
+  display: none;
+  z-index: 10;
+}
+
+.lesson-container:hover .lesson-info {
+  display: block;
+}
+
+.lesson-info:after {
+	content: '';
+	position: absolute;
+	left: 0;
+	top: 50%;
+	width: 0;
+	height: 0;
+	border: 39px solid transparent;
+	border-right-color: #00aabb;
+	border-left: 0;
+	margin-top: -39px;
+	margin-left: -39px;
 }

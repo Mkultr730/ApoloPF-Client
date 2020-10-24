@@ -3,8 +3,16 @@
     <div class="col-8 lessons-container">
       <!-- List of Lessons to Display - fix!: Component Needed -->
 
-      <div *ngFor="let icon of test" class="lesson" routerLink="prueba">
-        <img class="lesson-icon" src="/assets/icons/CONTENT/{{icon}}.svg" alt="">
+      <div *ngFor="let lesson of lessons | async; index as i" class="lesson-container" >
+        <div class="lesson">
+          <img class="lesson-icon" src="{{lesson.icon}}" alt="">
+        </div>
+        <div class="lesson-info" routerLink="prueba">
+          <h3>{{lesson.titulo}}</h3>
+          <ul *ngFor="let objetivo of lesson.objetivos" class="objetivos list-unstyled">
+            <li>{{objetivo}}</li>
+          </ul>
+        </div>
       </div>
     </div>
     <app-right-info class="col-4"></app-right-info>
