@@ -46,6 +46,12 @@
 .lesson-container {
   display: flex;
   align-items: center;
+  position: relative;
+}
+
+.bubble-container {
+  position: absolute;
+  margin-left: 170px;
 }
 
 .lesson-info {

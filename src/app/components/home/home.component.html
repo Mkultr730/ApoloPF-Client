@@ -7,11 +7,13 @@
         <div class="lesson">
           <img class="lesson-icon" src="{{lesson.icon}}" alt="">
         </div>
-        <div class="lesson-info" routerLink="prueba">
-          <h3>{{lesson.titulo}}</h3>
-          <ul *ngFor="let objetivo of lesson.objetivos" class="objetivos list-unstyled">
-            <li>{{objetivo}}</li>
-          </ul>
+        <div class="bubble-container">
+          <div class="lesson-info" routerLink="prueba">
+            <h3>{{lesson.titulo}}</h3>
+            <ul *ngFor="let objetivo of lesson.objetivos" class="objetivos list-unstyled">
+              <li>{{objetivo}}</li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
