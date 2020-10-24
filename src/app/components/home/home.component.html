@@ -1,28 +1,10 @@
 <div class="container custom-container">
   <div class="row">
-    <div class="col-8">
+    <div class="col-8 lessons-container">
       <!-- List of Lessons to Display - fix!: Component Needed -->
 
-      <div style="background-color: white; display: flex; border-radius: 50%; height: 500px; width: 500px">
-        <img style="margin: auto; height: 500px; width: 500px; padding: 15%; opacity: 0.4" src="/assets/icons/CONTENT/alarm.svg" alt="">
-      </div>
-
-
-      <div class="custom-card" *ngFor="let i of test" routerLink="prueba">
-        <div class="card-title">
-          <h4>LECCIÓN No. {{i}}</h4>
-        </div>
-        <div class="card-content">
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod corrupti voluptates tempore molestiae doloribus deleniti debitis, eaque sint repellendus impedit corporis reiciendis accusantium commodi quos rem fugiat veritatis placeat quae.</p>
-          <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Temporibus dolores libero ad fugit maiores? Tempora magni vero ipsum modi in totam earum, error inventore veniam sapiente ab repudiandae voluptate ut?</p>
-
-          <div class="info">
-            <a>
-              <img src="/assets/icons/CONTENT/magnifying_glass.svg">
-              Más información
-            </a>
-          </div>
-        </div>
+      <div *ngFor="let icon of test" class="lesson" routerLink="prueba">
+        <img class="lesson-icon" src="/assets/icons/CONTENT/{{icon}}.svg" alt="">
       </div>
     </div>
     <app-right-info class="col-4"></app-right-info>

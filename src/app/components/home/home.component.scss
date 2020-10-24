@@ -25,3 +25,26 @@
     }
   }
 }
+
+.lesson {
+  background-color: #fff;
+  display: flex;
+  border-radius: 50%;
+  height: 170px;
+  width: 170px;
+  margin: 15px 0;
+  cursor: pointer;
+}
+
+.lesson-icon {
+  margin: auto;
+  height: 85%;
+  padding: 15%;
+  opacity: 0.4;
+}
+
+.lessons-container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
