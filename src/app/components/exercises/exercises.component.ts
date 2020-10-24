@@ -1,4 +1,4 @@
-import { ThrowStmt } from '@angular/compiler';
+import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ContentService } from 'src/app/services/content.service';
 
@@ -9,18 +9,22 @@ import { ContentService } from 'src/app/services/content.service';
 })
 export class ExercisesComponent implements OnInit {
 
-  enunciados: any = []
+  enunciados: any = [];
 
-  constructor(private contentService: ContentService) { }
+  constructor(private contentService: ContentService, private location: Location) { }
 
   ngOnInit(): void {
-    this.getEnunciados()
+    this.getEnunciados();
   }
 
   getEnunciados() {
     this.contentService
       .get()
       .subscribe( res => this.enunciados = res )
+  }
+
+  backButton() {
+    this.location.back(); // <-- go back to previous location on cancel
   }
 
 }

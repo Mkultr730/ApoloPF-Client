@@ -1,3 +1,4 @@
+import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 
@@ -11,7 +12,8 @@ export class ToolbarComponent implements OnInit {
   user: firebase.User;
 
   constructor(
-    private authService: AuthService
+    private authService: AuthService,
+    private location: Location
   ) { }
 
   ngOnInit(): void {
@@ -19,6 +21,10 @@ export class ToolbarComponent implements OnInit {
       .subscribe(user => {
         this.user = user;
       })
+  }
+
+  backButton() {
+    this.location.back(); // <-- go back to previous location on cancel
   }
 
 }
