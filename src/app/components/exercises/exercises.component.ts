@@ -1,4 +1,6 @@
+import { ThrowStmt } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
+import { ContentService } from 'src/app/services/content.service';
 
 @Component({
   selector: 'app-exercises',
@@ -7,9 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ExercisesComponent implements OnInit {
 
-  constructor() { }
+  enunciados: any = []
+
+  constructor(private contentService: ContentService) { }
 
   ngOnInit(): void {
+    this.getEnunciados()
+  }
+
+  getEnunciados() {
+    this.contentService
+      .get()
+      .subscribe( res => this.enunciados = res )
   }
 
 }
