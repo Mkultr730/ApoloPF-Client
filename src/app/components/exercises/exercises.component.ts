@@ -1,4 +1,6 @@
+import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { ContentService } from 'src/app/services/content.service';
 
 @Component({
   selector: 'app-exercises',
@@ -7,9 +9,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ExercisesComponent implements OnInit {
 
-  constructor() { }
+  enunciados: any = [];
+
+  constructor(private contentService: ContentService, private location: Location) { }
 
   ngOnInit(): void {
+    this.getEnunciados();
+  }
+
+  getEnunciados() {
+    this.contentService
+      .get()
+      .subscribe( res => this.enunciados = res )
+  }
+
+  backButton() {
+    this.location.back(); // <-- go back to previous location on cancel
   }
 
 }
