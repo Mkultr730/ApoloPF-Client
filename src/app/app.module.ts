@@ -28,6 +28,7 @@ import { ExercisesComponent } from './components/exercises/exercises.component';
 import { GoalComponent } from './components/shared/goal/goal.component';
 import { NotesComponent } from './components/shared/notes/notes.component';
 import { RightInfoComponent } from './components/shared/right-info/right-info.component';
+import { AdminComponent } from './components/admin/admin.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { RightInfoComponent } from './components/shared/right-info/right-info.co
     ExercisesComponent,
     GoalComponent,
     NotesComponent,
-    RightInfoComponent
+    RightInfoComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,

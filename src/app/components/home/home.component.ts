@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { LessonsService } from 'src/app/services/lessons/lessons.service';
 
 @Component({
   selector: 'app-home',
@@ -7,10 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  test = [1,2,3,4,5]
-  constructor() { }
+  test = ['alarm', 'math', 'graduate', 'teacher', 'pencil'];
+  lessons: Observable<any>;
+
+  constructor(private lessonsService: LessonsService) { }
 
   ngOnInit(): void {
+    this.lessons = this.lessonsService.getAll();
+    this.lessons.subscribe(lessons => console.log(lessons));
   }
-
 }
