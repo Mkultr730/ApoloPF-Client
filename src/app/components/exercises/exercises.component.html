@@ -1,16 +1,22 @@
 <div class="container custom-container">
   <div class="row">
     <div class="col-8">
-      <mat-icon class="back-button" aria-hidden="false" aria-label="Example home icon">arrow_back</mat-icon>
+      <mat-icon class="back-button" (click)="backButton()" aria-hidden="false" aria-label="Example home icon">arrow_back</mat-icon>
       <!-- List of Lessons to Display - fix!: Component Needed -->
-      <div *ngFor="let e of enunciados" class="custom-card">
+      <div *ngFor="let pregunta of preguntas | async" class="custom-card" id="{{pregunta.id}}">
         <div class="card-title">
-          <h4>{{ e.payload.doc.data().enunciado }}</h4>
+          <h4>{{ pregunta.enunciado }}</h4>
         </div>
         <div class="card-content">
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod corrupti voluptates tempore molestiae doloribus deleniti debitis, eaque sint repellendus impedit corporis reiciendis accusantium commodi quos rem fugiat veritatis placeat quae.</p>
-          <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Temporibus dolores libero ad fugit maiores? Tempora magni vero ipsum modi in totam earum, error inventore veniam sapiente ab repudiandae voluptate ut?</p>
-
+          <div class="preguntas">
+            <div *ngFor="let question of pregunta.preguntas" class="pregunta">
+              <div class="pregunta">{{question.pregunta}}</div>
+              <ul class="opciones">
+                <li *ngFor="let opcion of question.respuestas">{{opcion}}</li>
+              </ul>
+              <div class="solucion">{{question.solucion}}</div>
+            </div>
+          </div>
           <div class="info">
             <a>
               <img src="/assets/icons/CONTENT/magnifying_glass.svg">

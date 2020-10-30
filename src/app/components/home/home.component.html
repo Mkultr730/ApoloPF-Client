@@ -13,7 +13,7 @@
             <ul *ngFor="let objetivo of lesson.objetivos" class="objetivos list-unstyled">
               <li>{{objetivo}}</li>
             </ul>
-            <button routerLink="prueba">Ver Lección</button>
+            <button routerLink="prueba/{{lesson.id}}">Ver Lección</button>
           </div>
         </div>
       </div>

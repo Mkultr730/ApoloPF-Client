@@ -9,6 +9,6 @@ export class LessonsService {
   constructor(private firestore: AngularFirestore) { }
 
   getAll() {
-    return this.firestore.collection('lecciones').valueChanges();
+    return this.firestore.collection('lecciones').valueChanges({ idField: 'id' });
   }
 }
