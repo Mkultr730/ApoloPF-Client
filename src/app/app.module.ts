@@ -29,6 +29,9 @@ import { GoalComponent } from './components/shared/goal/goal.component';
 import { NotesComponent } from './components/shared/notes/notes.component';
 import { RightInfoComponent } from './components/shared/right-info/right-info.component';
 import { AdminComponent } from './components/admin/admin.component';
+import { HeaderComponent } from './components/shared/header/header.component';
+import { DrawerComponent } from './components/shared/drawer/drawer.component';
+import { PopperDirective } from './popper.directive';
 
 @NgModule({
   declarations: [
@@ -40,7 +43,10 @@ import { AdminComponent } from './components/admin/admin.component';
     GoalComponent,
     NotesComponent,
     RightInfoComponent,
-    AdminComponent
+    AdminComponent,
+    HeaderComponent,
+    DrawerComponent,
+    PopperDirective
   ],
   imports: [
     BrowserModule,

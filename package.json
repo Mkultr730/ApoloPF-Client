@@ -30,6 +30,7 @@
     "jquery": "^3.5.1",
     "material-design-kit": "^2.2.0",
     "perfect-scrollbar": "^1.5.0",
+    "popper.js": "^1.16.1",
     "rxjs": "~6.5.4",
     "spinkit": "^2.0.1",
     "tslib": "^2.0.0",
