@@ -1,6 +1,6 @@
 export interface Leccion {
     id: string;
-    año: string;
+    year: string;
     ejercicios: Array<string>;
     icon: string;
     objetivos: Array<string>;

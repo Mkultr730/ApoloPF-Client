@@ -4,78 +4,42 @@
             <!-- List of Lessons to Display - fix!: Component Needed -->
 
             <div *ngFor="let lesson of lessons | async; index as i" class="lesson-container">
+                <!-- <pre>{{lesson | json }}</pre> -->
                 <div class="lesson">
                     <img class="lesson-icon" src="{{lesson.icon}}" alt="">
                 </div>
                 <div class="bubble-container">
                     
-                    
                     <div class="lesson-info">
                         <div>
                         <div class="media">
                             <div class="media-left mr-12pt">
-                                <img src="assets/images/paths/sketch_40x40@2x.png" width="40" height="40" alt="Angular" class="rounded">
+                                <img src="{{lesson.icon}}" width="40" height="40" alt="Angular" class="rounded">
                             </div>
                             <div class="media-body">
                                 <div class="card-title mb-0">Learn Sketch</div>
                                 <p class="lh-1 mb-0">
-                                    <span class="text-50 small">with</span>
-                                    <span class="text-50 small font-weight-bold">Elijah Murray</span>
+                                    <span class="text-50 small">{{lesson.year}}° </span>
+                                    <span class="text-50 small font-weight-bold">grado</span>
                                 </p>
                             </div>
                         </div>
                 
-                        <p class="my-16pt text-70">Learn the fundamentals of working with Angular and how to create basic applications.
-                        </p>
+                        <p *ngFor="let parrafo of lesson.enunciado?.split(';')" class="my-16pt text-70">{{parrafo}}</p>
                 
                         <div class="mb-16pt">
-                            <div class="d-flex align-items-center">
+                            <div *ngFor="let objetivo of lesson.objetivos" class="d-flex align-items-center">
                                 <span class="material-icons icon-16pt text-50 mr-8pt">check</span>
-                                <p class="flex text-50 lh-1 mb-0"><small>Fundamentals of working with Angular</small></p>
-                            </div>
-                            <div class="d-flex align-items-center">
-                                <span class="material-icons icon-16pt text-50 mr-8pt">check</span>
-                                <p class="flex text-50 lh-1 mb-0"><small>Create complete Angular applications</small></p>
-                            </div>
-                            <div class="d-flex align-items-center">
-                                <span class="material-icons icon-16pt text-50 mr-8pt">check</span>
-                                <p class="flex text-50 lh-1 mb-0"><small>Working with the Angular CLI</small></p>
-                            </div>
-                            <div class="d-flex align-items-center">
-                                <span class="material-icons icon-16pt text-50 mr-8pt">check</span>
-                                <p class="flex text-50 lh-1 mb-0"><small>Understanding Dependency Injection</small></p>
-                            </div>
-                            <div class="d-flex align-items-center">
-                                <span class="material-icons icon-16pt text-50 mr-8pt">check</span>
-                                <p class="flex text-50 lh-1 mb-0"><small>Testing with Angular</small></p>
+                                <p class="flex text-50 lh-1 mb-0"><small>{{objetivo}}</small></p>
                             </div>
                         </div>
                 
                         <div class="row align-items-center">
-                            <div class="col-auto">
-                                <div class="d-flex align-items-center mb-4pt">
-                                    <span class="material-icons icon-16pt text-50 mr-4pt">access_time</span>
-                                    <p class="flex text-50 lh-1 mb-0"><small>6 hours</small></p>
-                                </div>
-                                <div class="d-flex align-items-center mb-4pt">
-                                    <span class="material-icons icon-16pt text-50 mr-4pt">play_circle_outline</span>
-                                    <p class="flex text-50 lh-1 mb-0"><small>12 lessons</small></p>
-                                </div>
-                                <div class="d-flex align-items-center">
-                                    <span class="material-icons icon-16pt text-50 mr-4pt">assessment</span>
-                                    <p class="flex text-50 lh-1 mb-0"><small>Beginner</small></p>
-                                </div>
-                            </div>
                             <div class="col text-right">
-                                <a href="student-course.html" class="btn btn-primary">Watch trailer</a>
+                                <a routerLink="prueba/{{lesson.id}}" class="btn btn-primary">Abrir Lección</a>
                             </div>
                         </div>
                     </div>
-                        <!-- <h3>{{lesson.titulo}}</h3>
-                        <ul *ngFor="let objetivo of lesson.objetivos" class="objetivos list-unstyled">
-                            <li>{{objetivo}}</li>
-                        </ul>
-                        <button routerLink="prueba/{{lesson.id}}">Ver Lección</button> -->
                     </div>
                 </div>
             </div>
@@ -83,142 +47,3 @@
         <app-right-info class="col-4"></app-right-info>
     </div>
 </div>
-<div class="container page__container">
-<div class="row card-group-row">
-<div class="col-md-6 col-lg-4 col-xl-3 card-group-row__col">
-
-    <ng-container [appPopper]="target" [target]="tooltip"></ng-container>
-
-    <div #target
-        class="card card-sm card--elevated p-relative o-hidden overlay overlay--primary-dodger-blue js-overlay card-group-row__card"
-        data-toggle="popover" data-trigger="click">
-
-        <a href="student-course.html" class="card-img-top js-image" data-position="" data-height="140">
-            <img src="assets/images/paths/sketch_430x168.png" alt="course">
-            <span class="overlay__content">
-                <span class="overlay__action d-flex flex-column text-center">
-                    <i class="material-icons icon-32pt">play_circle_outline</i>
-                    <span class="card-title text-white">Preview</span>
-                </span>
-            </span>
-        </a>
-
-        <div class="card-body flex">
-            <div class="d-flex">
-                <div class="flex">
-                    <a class="card-title" href="student-course.html">Learn Sketch</a>
-                    <small class="text-50 font-weight-bold mb-4pt">Elijah Murray</small>
-                </div>
-                <a href="student-course.html" data-toggle="tooltip" data-title="Add Favorite" data-placement="top"
-                    data-boundary="window"
-                    class="ml-4pt material-icons text-20 card-course__icon-favorite">favorite_border</a>
-            </div>
-            <div class="d-flex">
-                <div class="rating flex">
-                    <span class="rating__item"><span class="material-icons">star</span></span>
-                    <span class="rating__item"><span class="material-icons">star</span></span>
-                    <span class="rating__item"><span class="material-icons">star</span></span>
-                    <span class="rating__item"><span class="material-icons">star</span></span>
-                    <span class="rating__item"><span class="material-icons">star_border</span></span>
-                </div>
-                <!-- <small class="text-50">6 hours</small> -->
-            </div>
-        </div>
-        <div class="card-footer">
-            <div class="row justify-content-between">
-                <div class="col-auto d-flex align-items-center">
-                    <span class="material-icons icon-16pt text-50 mr-4pt">access_time</span>
-                    <p class="flex text-50 lh-1 mb-0"><small>6 hours</small></p>
-                </div>
-                <div class="col-auto d-flex align-items-center">
-                    <span class="material-icons icon-16pt text-50 mr-4pt">play_circle_outline</span>
-                    <p class="flex text-50 lh-1 mb-0"><small>12 lessons</small></p>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div #tooltip class="popoverContainer d-none">
-        <div class="media">
-            <div class="media-left mr-12pt">
-                <img src="assets/images/paths/sketch_40x40@2x.png" width="40" height="40" alt="Angular" class="rounded">
-            </div>
-            <div class="media-body">
-                <div class="card-title mb-0">Learn Sketch</div>
-                <p class="lh-1 mb-0">
-                    <span class="text-50 small">with</span>
-                    <span class="text-50 small font-weight-bold">Elijah Murray</span>
-                </p>
-            </div>
-        </div>
-
-        <p class="my-16pt text-70">Learn the fundamentals of working with Angular and how to create basic applications.
-        </p>
-
-        <div class="mb-16pt">
-            <div class="d-flex align-items-center">
-                <span class="material-icons icon-16pt text-50 mr-8pt">check</span>
-                <p class="flex text-50 lh-1 mb-0"><small>Fundamentals of working with Angular</small></p>
-            </div>
-            <div class="d-flex align-items-center">
-                <span class="material-icons icon-16pt text-50 mr-8pt">check</span>
-                <p class="flex text-50 lh-1 mb-0"><small>Create complete Angular applications</small></p>
-            </div>
-            <div class="d-flex align-items-center">
-                <span class="material-icons icon-16pt text-50 mr-8pt">check</span>
-                <p class="flex text-50 lh-1 mb-0"><small>Working with the Angular CLI</small></p>
-            </div>
-            <div class="d-flex align-items-center">
-                <span class="material-icons icon-16pt text-50 mr-8pt">check</span>
-                <p class="flex text-50 lh-1 mb-0"><small>Understanding Dependency Injection</small></p>
-            </div>
-            <div class="d-flex align-items-center">
-                <span class="material-icons icon-16pt text-50 mr-8pt">check</span>
-                <p class="flex text-50 lh-1 mb-0"><small>Testing with Angular</small></p>
-            </div>
-        </div>
-
-        <div class="row align-items-center">
-            <div class="col-auto">
-                <div class="d-flex align-items-center mb-4pt">
-                    <span class="material-icons icon-16pt text-50 mr-4pt">access_time</span>
-                    <p class="flex text-50 lh-1 mb-0"><small>6 hours</small></p>
-                </div>
-                <div class="d-flex align-items-center mb-4pt">
-                    <span class="material-icons icon-16pt text-50 mr-4pt">play_circle_outline</span>
-                    <p class="flex text-50 lh-1 mb-0"><small>12 lessons</small></p>
-                </div>
-                <div class="d-flex align-items-center">
-                    <span class="material-icons icon-16pt text-50 mr-4pt">assessment</span>
-                    <p class="flex text-50 lh-1 mb-0"><small>Beginner</small></p>
-                </div>
-            </div>
-            <div class="col text-right">
-                <a href="student-course.html" class="btn btn-primary">Watch trailer</a>
-            </div>
-        </div>
-
-    </div>
-
-</div>
-</div>
-</div>
-<script src="assets/vendor/jquery.min.js"></script>
-
-<!-- Bootstrap -->
-<script src="/assets/vendor/popper.min.js"></script>
-<script src="/assets/vendor/bootstrap.min.js"></script>
-
-<!-- Perfect Scrollbar -->
-<script src="assets/vendor/perfect-scrollbar.min.js"></script>
-
-<!-- DOM Factory -->
-<script src="assets/vendor/dom-factory.js"></script>
-
-<!-- MDK -->
-<script src="assets/vendor/material-design-kit.js"></script>
-
-<!-- App JS -->
-<script src="assets/js/app.js"></script>
-
-<!-- Preloader -->
-<script src="assets/js/preloader.js"></script>

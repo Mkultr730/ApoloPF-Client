@@ -9,7 +9,6 @@ import { LessonsService } from 'src/app/services/lessons/lessons.service';
 })
 export class HomeComponent implements OnInit {
 
-  test = ['alarm', 'math', 'graduate', 'teacher', 'pencil'];
   lessons: Observable<any>;
 
   constructor(private lessonsService: LessonsService) { }
