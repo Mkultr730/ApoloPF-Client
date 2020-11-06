@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Leccion } from 'src/app/interfaces/leccion';
 import { LessonsService } from 'src/app/services/lessons/lessons.service';
 
 @Component({
@@ -9,7 +10,7 @@ import { LessonsService } from 'src/app/services/lessons/lessons.service';
 })
 export class HomeComponent implements OnInit {
 
-  lessons: Observable<any>;
+  lessons: Observable<Array<Leccion>>;
 
   constructor(private lessonsService: LessonsService) { }
 

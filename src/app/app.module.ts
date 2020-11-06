@@ -32,6 +32,8 @@ import { AdminComponent } from './components/admin/admin.component';
 import { HeaderComponent } from './components/shared/header/header.component';
 import { DrawerComponent } from './components/shared/drawer/drawer.component';
 import { PopperDirective } from './popper.directive';
+import { IconPipe } from './pipes/lesson/icon.pipe';
+import { TitlePipe } from './pipes/lesson/title.pipe';
 
 @NgModule({
   declarations: [
@@ -46,7 +48,9 @@ import { PopperDirective } from './popper.directive';
     AdminComponent,
     HeaderComponent,
     DrawerComponent,
-    PopperDirective
+    PopperDirective,
+    IconPipe,
+    TitlePipe
   ],
   imports: [
     BrowserModule,

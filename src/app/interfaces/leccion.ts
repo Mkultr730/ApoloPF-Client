@@ -2,6 +2,7 @@ export interface Leccion {
     id: string;
     year: string;
     ejercicios: Array<string>;
+    enunciado: string;
     icon: string;
     objetivos: Array<string>;
     titulo: string;
