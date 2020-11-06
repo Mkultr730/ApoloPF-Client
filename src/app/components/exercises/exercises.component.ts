@@ -2,7 +2,7 @@ import { Location } from '@angular/common';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable, Subscription } from 'rxjs';
-import { Leccion } from 'src/app/interfaces/leccion';
+import { Ejercicio, Leccion } from 'src/app/interfaces/leccion';
 import { ContentService } from 'src/app/services/content.service';
 import { LessonsService } from 'src/app/services/lessons/lessons.service';
 
@@ -13,7 +13,7 @@ import { LessonsService } from 'src/app/services/lessons/lessons.service';
 })
 export class ExercisesComponent implements OnInit, OnDestroy {
 
-  preguntas: Observable<any>;
+  secciones: Observable<Array<Ejercicio>>;
   lessonId: string;
   lesson: Observable<Leccion>;
   private idSub: Subscription;
@@ -31,7 +31,7 @@ export class ExercisesComponent implements OnInit, OnDestroy {
   }
 
   getEnunciados() {
-    this.preguntas = this.contentService.get(this.lessonId);
+    this.secciones = this.contentService.get(this.lessonId);
   }
 
   backButton() {
