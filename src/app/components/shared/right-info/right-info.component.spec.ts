@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { RightInfoComponent } from './right-info.component';
 
@@ -6,7 +6,7 @@ describe('RightInfoComponent', () => {
   let component: RightInfoComponent;
   let fixture: ComponentFixture<RightInfoComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ RightInfoComponent ]
     })
