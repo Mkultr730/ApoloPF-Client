@@ -1,7 +1,8 @@
 import { Answer } from './answer.model';
 
-export interface Question{
-    madeby:string;
-    text:string;
-    answers:Answer[];
+export interface Question {
+  id: string;
+  madeby: string;
+  text: string;
+  answers: Array<Answer>;
 }

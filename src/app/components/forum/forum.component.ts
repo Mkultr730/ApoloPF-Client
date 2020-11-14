@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Question } from 'src/app/models/question.model';
 import { User } from 'src/app/models/user.model';
 import { AuthService } from 'src/app/services/auth.service';
 import { ForumsService } from 'src/app/services/forums.service';
@@ -11,18 +12,17 @@ import { ForumsService } from 'src/app/services/forums.service';
 })
 export class ForumComponent implements OnInit {
 
-  questions:any = []
+  questions: Observable<Array<Question>>;
   user: Observable<User>;
 
   constructor(private service: ForumsService) { }
 
   ngOnInit(): void {
-    this.questions = this.service.getQuestions(2020, 4)
-    // console.log(this.questions);
+    this.questions = this.service.getQuestions(2020, 4);
     this.user = this.userName('G9Drl5o6YmbbBmMNrnhQFNgogJQ2');
   }
 
-  userName(uid: String) {
+  userName(uid: string) {
     return this.service.getUserInfo(uid);
   }
 
