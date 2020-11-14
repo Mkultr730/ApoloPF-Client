@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AngularFireAuth } from '@angular/fire/auth';
 import { Observable } from 'rxjs';
-import { Course } from 'src/app/models/course.model';
 import { User } from 'src/app/models/user.model';
 import { AuthService } from 'src/app/services/auth.service';
 import { CourseService } from 'src/app/services/course.service';
@@ -18,10 +16,11 @@ export class TeacherHomeComponent implements OnInit {
   constructor(private authservice: AuthService, private courseService: CourseService) { }
   ngOnInit(): void {
       this.user = this.authservice.user$;
-      this.courseService.listCourses(2020).then(cursos => {
-        console.log(cursos);
-        this.Cursos = cursos;
-      });
+      this.user.subscribe(user => { console.log(user); });
+      // this.courseService.listCourses(2020).then(cursos => {
+      //   console.log(cursos);
+      //   this.Cursos = cursos;
+      // });
 
   }
 

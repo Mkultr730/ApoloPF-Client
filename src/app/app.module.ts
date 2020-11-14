@@ -37,6 +37,8 @@ import { TitlePipe } from './pipes/lesson/title.pipe';
 import { TeacherHomeComponent } from './components/teacher-home/teacher-home.component';
 import { CourseReportComponent } from './components/course-report/course-report.component';
 import { StudentReportComponent } from './components/student-report/student-report.component';
+import { ClasePipe } from './pipes/teacher/clase.pipe';
+import { IdClasePipe } from './pipes/teacher/id-clase.pipe';
 
 @NgModule({
   declarations: [
@@ -56,7 +58,9 @@ import { StudentReportComponent } from './components/student-report/student-repo
     TitlePipe,
     TeacherHomeComponent,
     CourseReportComponent,
-    StudentReportComponent
+    StudentReportComponent,
+    ClasePipe,
+    IdClasePipe
   ],
   imports: [
     BrowserModule,
