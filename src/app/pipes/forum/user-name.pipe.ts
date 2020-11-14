@@ -7,7 +7,7 @@ import { User } from 'src/app/models/user.model';
 })
 export class UserNamePipe implements PipeTransform {
 
-  transform(value: DocumentReference, ...args: unknown[]): unknown {
+  transform(value: DocumentReference, ...args: unknown[]): Promise<string> {
     return value.get().then(userSnap => {
       return (userSnap.data() as User).displayName;
     });
