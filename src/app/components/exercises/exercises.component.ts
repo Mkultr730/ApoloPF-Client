@@ -4,7 +4,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Observable, Subscription } from 'rxjs';
-import { Ejercicio, Leccion } from 'src/app/interfaces/leccion';
+import { Ejercicio, Leccion } from 'src/app/models/leccion';
 import { ContentService } from 'src/app/services/content.service';
 import { LessonsService } from 'src/app/services/lessons/lessons.service';
 
