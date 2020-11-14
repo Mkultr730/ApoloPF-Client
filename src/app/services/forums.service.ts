@@ -37,7 +37,7 @@ export class ForumsService {
   }
 
   getQuestions(year: number, schoolYYYY: number) {
-    return this.afs.collection<Question>(`forums/${year}/${schoolYYYY}`).valueChanges({ idField: 'id' });
+    return this.afs.collection<Question>(`forums/${year}/${schoolYYYY}`).valueChanges();
   }
 }
 

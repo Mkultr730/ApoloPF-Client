@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Question } from 'src/app/models/question.model';
 import { User } from 'src/app/models/user.model';
-import { AuthService } from 'src/app/services/auth.service';
 import { ForumsService } from 'src/app/services/forums.service';
 
 @Component({
@@ -19,10 +18,6 @@ export class ForumComponent implements OnInit {
 
   ngOnInit(): void {
     this.questions = this.service.getQuestions(2020, 4);
-  }
-
-  getUserInfo(uid: string) {
-    return this.service.getUserInfo(uid);
   }
 
 }

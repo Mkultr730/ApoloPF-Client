@@ -75,7 +75,7 @@
 
           <div class="list-group list-group-flush">
 
-              <div *ngFor="let question of (questions | async)" class="list-group-item p-3">
+              <div *ngFor="let question of questions | async" class="list-group-item p-3">
                   <div class="row align-items-start">
                       <div class="col-md-3 mb-8pt mb-md-0">
                           <div class="media align-items-center">
@@ -87,8 +87,7 @@
                                   </a>
                               </div>
                               <div class="d-flex flex-column media-body media-middle">
-                                  <a href=""
-                                     class="card-title">{{ (getUserInfo(question.madeby) | async)?.displayName }} </a>
+                                  <h2 class="card-title">{{ question.madeby | userName | async }} </h2>
                                   <small class="text-muted">2 days ago</small>
                               </div>
                           </div>
@@ -266,5 +265,3 @@
       </div>
   </div>
 </div>
-
-<pre>{{questions | async |json}}</pre>

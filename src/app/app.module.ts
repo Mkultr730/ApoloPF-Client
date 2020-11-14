@@ -35,6 +35,7 @@ import { PopperDirective } from './popper.directive';
 import { IconPipe } from './pipes/lesson/icon.pipe';
 import { TitlePipe } from './pipes/lesson/title.pipe';
 import { ForumComponent } from './components/forum/forum.component';
+import { UserNamePipe } from './pipes/forum/user-name.pipe';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,8 @@ import { ForumComponent } from './components/forum/forum.component';
     PopperDirective,
     IconPipe,
     TitlePipe,
-    ForumComponent
+    ForumComponent,
+    UserNamePipe
   ],
   imports: [
     BrowserModule,
