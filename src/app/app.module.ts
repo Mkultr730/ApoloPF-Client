@@ -34,6 +34,9 @@ import { DrawerComponent } from './components/shared/drawer/drawer.component';
 import { PopperDirective } from './popper.directive';
 import { IconPipe } from './pipes/lesson/icon.pipe';
 import { TitlePipe } from './pipes/lesson/title.pipe';
+import { TeacherHomeComponent } from './components/teacher-home/teacher-home.component';
+import { CourseReportComponent } from './components/course-report/course-report.component';
+import { StudentReportComponent } from './components/student-report/student-report.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +53,10 @@ import { TitlePipe } from './pipes/lesson/title.pipe';
     DrawerComponent,
     PopperDirective,
     IconPipe,
-    TitlePipe
+    TitlePipe,
+    TeacherHomeComponent,
+    CourseReportComponent,
+    StudentReportComponent
   ],
   imports: [
     BrowserModule,
