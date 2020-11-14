@@ -20,6 +20,10 @@ export class ForumsService {
     private afs: AngularFirestore
   ) { }
 
+  getUserInfo(uid: String) {
+    return this.afs.doc<User>(`users/${uid}`).valueChanges();
+  }
+
   async newQuestion(question:string,uid:string,year:number,school_YYYY:number){
     const questionobj:Question ={
       madeby:uid,
@@ -27,7 +31,7 @@ export class ForumsService {
       answers: []
     };
     const response=await this.afs.collection(`forums/${year}/${school_YYYY}/`).add(questionobj);
-    console.log(response.id);
+    // console.log(response.id);
     return response;
   }
 
@@ -38,7 +42,7 @@ export class ForumsService {
     //get current info from the course
     await questionRef.get().toPromise().then(function (doc) {
       if (doc.exists) {
-        console.log("Document data:", doc.data());
+        // console.log("Document data:", doc.data());
         questionmod = doc.data() as Question;
         const newAnswer:Answer={uid:userid,text:textanswer};
         questionmod['answers'].push(newAnswer);
@@ -55,23 +59,33 @@ export class ForumsService {
   async deleteQuestion(questionid:string,year:number,school_YYYY:number){
     await this.afs.collection(`forums/${year}/${school_YYYY}/`).doc(questionid).delete();
   }
-  
-  async getQuestions(year:number,school_YYYY:number){
-    let allQuestions: any = []
+
+  async getQuestions(year: number, school_YYYY: number) {
     const questionRef = this.afs.collection(`forums/${year}/${school_YYYY}`);
-    await questionRef
-      .get().toPromise()
-      .then(function (querySnapshot) {
-        //iterate all the questions
-          querySnapshot.forEach(async (question) => {
-            console.log(question.id)
-            console.log(question.data())
-            allQuestions.push(question.data() as Question)
-          });
+    // console.log(allQuestions);
+    return await questionRef.get().valueChanges({ idField: 'id' }).map(querySnapshot => {
+        querySnapshot.forEach(question => {
+            allQuestions.push(question.data() as Question);
         });
-    console.log(allQuestions);
-    return allQuestions;
+    });
   }
+
+  // async getQuestions(year:number,school_YYYY:number){
+  //   let allQuestions: any = []
+  //   const questionRef = this.afs.collection(`forums/${year}/${school_YYYY}`);
+  //   await questionRef
+  //     .get().toPromise()
+  //     .then(function (querySnapshot) {
+  //       //iterate all the questions
+  //         querySnapshot.forEach(async (question) => {
+  //           // console.log(question.id)
+  //           // console.log(question.data())
+  //           allQuestions.push(question.data() as Question)
+  //         });
+  //       });
+  //   // console.log(allQuestions);
+  //   return allQuestions;
+  // }
 }
 
 

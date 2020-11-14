@@ -34,6 +34,7 @@ import { DrawerComponent } from './components/shared/drawer/drawer.component';
 import { PopperDirective } from './popper.directive';
 import { IconPipe } from './pipes/lesson/icon.pipe';
 import { TitlePipe } from './pipes/lesson/title.pipe';
+import { ForumComponent } from './components/forum/forum.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,8 @@ import { TitlePipe } from './pipes/lesson/title.pipe';
     DrawerComponent,
     PopperDirective,
     IconPipe,
-    TitlePipe
+    TitlePipe,
+    ForumComponent
   ],
   imports: [
     BrowserModule,
