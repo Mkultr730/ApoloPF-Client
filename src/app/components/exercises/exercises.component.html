@@ -19,7 +19,7 @@
     </nav>
   </div>
 </div>
-<div class="bg-primary pb-4pt pt-32pt counter">
+<div *ngIf="(secciones | async)?.length > 1" class="bg-primary pb-4pt pt-32pt counter">
   <div class="container page__container">
     <nav class="course-nav">
       <div *ngFor="let j of [].constructor((secciones | async)?.length); let k = index">
