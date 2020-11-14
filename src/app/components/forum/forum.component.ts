@@ -19,10 +19,9 @@ export class ForumComponent implements OnInit {
 
   ngOnInit(): void {
     this.questions = this.service.getQuestions(2020, 4);
-    this.user = this.userName('G9Drl5o6YmbbBmMNrnhQFNgogJQ2');
   }
 
-  userName(uid: string) {
+  getUserInfo(uid: string) {
     return this.service.getUserInfo(uid);
   }
 
