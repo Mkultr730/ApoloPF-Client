@@ -17,20 +17,18 @@ export class ForumsService {
     return this.afs.doc<User>(`users/${uid}`).valueChanges();
   }
 
-  newQuestion(question: string, uid: string, year: number, schoolYYYY: number) {
+  newQuestion(question: string, uid: string, year: number, schoolYYYY: number, details: string) {
     return this.afs.collection(`forums/${year}/${schoolYYYY}/`).add({
-      madeby: uid,
-      text: question,
-      answers: []
+      answers: [],
+      details: details,
+      madeby: this.afs.doc(`users/${uid}`).ref,
+      question: question,
     });
   }
 
   answerQuestion(questionid: string, userid: string, textanswer: string, grade: number, year: number) {
-    console.log(questionid, year, grade, userid, textanswer)
     const questionRef = this.afs.doc<Question>(`/forums/${year}/${grade}/${questionid}`);
-    console.log(questionRef);
     questionRef.get().subscribe(question => {
-      // console.log(question);
       const questionVal = question.data() as  Question;
       questionVal.answers.push({ uid: this.afs.doc(`users/${userid}`).ref, text: textanswer });
       questionRef.update({ answers: questionVal.answers });

@@ -1,3 +1,5 @@
+import { DocumentReference } from '@angular/fire/firestore';
+
 export interface User{
     uid: string;
     email: string;
@@ -5,6 +7,6 @@ export interface User{
     role?: string;
     authType: number;
     courses?: string[];
-    Course?: string;
+    Course?: DocumentReference;
     displayName?: string;
 }

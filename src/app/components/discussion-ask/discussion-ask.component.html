@@ -1,5 +1,5 @@
 <div class="container page__container">
-    <form action="">
+    <form [formGroup]="questionForm">
         <div class="row">
             <div class="col-lg-9">
                 <div class="page-section">
@@ -7,11 +7,23 @@
 
                     <div class="list-group">
                         <div class="list-group-item">
+
+                            <div role="group" aria-labelledby="label-question" class="m-0 form-group">
+                                <div class="form-row">
+                                    <label id="label-title" for="title" class="col-md-3 col-form-label form-label">Título</label>
+                                    <div class="col-md-9">
+                                        <input formControlName="title" id="title" placeholder="Tu pregunta..." rows="4" class="form-control" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="list-group-item">
                             <div role="group" aria-labelledby="label-question" class="m-0 form-group">
                                 <div class="form-row">
                                     <label id="label-question" for="question" class="col-md-3 col-form-label form-label">Detalles de la pregunta</label>
                                     <div class="col-md-9">
-                                        <textarea id="question" placeholder="Escribe detalladamente tu pregunta ..." rows="4" class="form-control"></textarea>
+                                        <textarea formControlName="details" id="question" placeholder="Escribe detalladamente tu pregunta ..." rows="4" class="form-control"></textarea>
                                     </div>
                                 </div>
                             </div>
@@ -36,7 +48,7 @@
                             <small id="description-notify" class="form-text text-muted">If unchecked, you'll still recieve notifications on our website.</small>
                         </div> -->
                         <div class="list-group-item">
-                            <button type="button" class="btn btn-accent">Publicar Pregunta</button>
+                            <button type="button" class="btn btn-accent" (click)="submitQuestion()">Publicar Pregunta</button>
                         </div>
                     </div>
 
