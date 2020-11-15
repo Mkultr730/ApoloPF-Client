@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { Ejercicio } from '../interfaces/leccion';
+import { Ejercicio } from '../models/leccion';
 
 @Injectable({
   providedIn: 'root'

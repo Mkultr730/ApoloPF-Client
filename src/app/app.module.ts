@@ -39,6 +39,8 @@ import { CourseReportComponent } from './components/course-report/course-report.
 import { StudentReportComponent } from './components/student-report/student-report.component';
 import { ClasePipe } from './pipes/teacher/clase.pipe';
 import { IdClasePipe } from './pipes/teacher/id-clase.pipe';
+import { ForumComponent } from './components/forum/forum.component';
+import { UserNamePipe } from './pipes/forum/user-name.pipe';
 
 @NgModule({
   declarations: [
@@ -60,7 +62,9 @@ import { IdClasePipe } from './pipes/teacher/id-clase.pipe';
     CourseReportComponent,
     StudentReportComponent,
     ClasePipe,
-    IdClasePipe
+    IdClasePipe,
+    ForumComponent,
+    UserNamePipe
   ],
   imports: [
     BrowserModule,

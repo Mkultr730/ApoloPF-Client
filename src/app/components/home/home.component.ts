@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Leccion } from 'src/app/interfaces/leccion';
+import { Leccion } from 'src/app/models/leccion';
 import { LessonsService } from 'src/app/services/lessons/lessons.service';
 
 @Component({

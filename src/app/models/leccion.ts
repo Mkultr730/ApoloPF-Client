@@ -10,6 +10,7 @@ export interface Leccion {
 
 export interface Ejercicio {
     enunciado: string;
+    leccion: string;
     preguntas: Array<Pregunta>;
 }
 
