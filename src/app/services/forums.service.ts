@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { Observable } from 'rxjs';
 import { Question } from '../models/question.model';
 import { User } from '../models/user.model';
 
@@ -37,8 +38,13 @@ export class ForumsService {
   }
 
   getQuestions(year: number, schoolYYYY: number) {
-    return this.afs.collection<Question>(`forums/${year}/${schoolYYYY}`).valueChanges();
+    return this.afs.collection<Question>(`forums/${year}/${schoolYYYY}`).valueChanges({idField: 'id'});
   }
+
+  getQuestion(year: number, schoolYYYY: number, questionId: string) {
+    return this.afs.collection<Question>(`forums/${year}/${schoolYYYY}`).doc(questionId).valueChanges();
+  }
+
 }
 
 

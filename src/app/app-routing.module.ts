@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AdminComponent } from './components/admin/admin.component';
+import { DiscussionAskComponent } from './components/discussion-ask/discussion-ask.component';
+import { DiscussionComponent } from './components/discussion/discussion.component';
 import { ExercisesComponent } from './components/exercises/exercises.component';
 import { ForumComponent } from './components/forum/forum.component';
 import { HomeComponent } from './components/home/home.component';
@@ -15,6 +17,8 @@ const routes: Routes = [
   { path: 'prueba/:id', component: ExercisesComponent, canActivate: [AuthGuard] },
   { path: 'admin', component: AdminComponent, canActivate: [AuthGuard, AdminGuard] },
   { path: 'forum', component: ForumComponent, canActivate: [AuthGuard] },
+  { path: 'forum/:year/:grade/:id', component: DiscussionComponent, canActivate: [AuthGuard] },
+  { path: 'ask-question', component: DiscussionAskComponent, canActivate: [AuthGuard] },
   { path: '**', redirectTo: '' },
 ];
 
