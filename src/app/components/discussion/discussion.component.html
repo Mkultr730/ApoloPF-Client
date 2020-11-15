@@ -7,10 +7,10 @@
 
                 <h1 class="h2 measure-lead-max mb-2">{{ question?.question }}</h1>
                 <p class="text-muted d-flex align-items-center mb-lg-32pt">
-                    <a href="discussions.html" class="mr-3">Back to Community</a>
-                    <a href="#" class="mr-2 text-50">Mute</a>
+                    <a routerLink="/forum" class="mr-3">Volver al foro</a>
+                    <!-- <a href="#" class="mr-2 text-50">Mute</a>
                     <a href="#" class="mr-2 text-50">Report</a>
-                    <a href="#" class="text-50" style="text-decoration: underline;">Edit</a>
+                    <a href="#" class="text-50" style="text-decoration: underline;">Edit</a> -->
                 </p>
 
                 <div class="card card-body" *ngIf="question">
@@ -45,11 +45,11 @@
                             <label for="comment" class="form-label">Your reply</label>
                             <textarea class="form-control" [formControl]="newAnswer" name="comment" id="comment" rows="3" placeholder="Type here to reply to Matney ..."></textarea>
                         </div>
-                        <button class="btn btn-outline-secondary" (click)="postComment()">Post comment</button>
+                        <button class="btn btn-outline-secondary" (click)="postComment()">Publicar respuesta</button>
                     </div>
                 </div>
                 <div class="pt-3">
-                    <h4>{{ question?.answers.length }} comentarios</h4>
+                    <h4>{{ question?.answers.length }} {{ question?.answers.length>1? 'comentarios' : 'comentario' }}</h4>
                     <div *ngFor="let ans of question?.answers" class="d-flex mb-3">
                         <a href="" class="avatar avatar-sm mr-12pt">
                             <!-- <img src="../../public/images/people/256/256_rsz_karl-s-973833-unsplash.jpg" alt="people" class="avatar-img rounded-circle"> -->
@@ -60,7 +60,7 @@
                             <p class="mt-1 text-70">{{ ans?.text }}</p>
                             <div class="d-flex align-items-center">
                                 <small class="text-50 mr-2">27 min ago</small>
-                                <a href="" class="text-50"><small>Liked</small></a>
+                                <a class="text-50"><small>Liked</small></a>
                             </div>
                         </div>
                     </div>
