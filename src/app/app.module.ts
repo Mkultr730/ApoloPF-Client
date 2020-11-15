@@ -34,6 +34,11 @@ import { DrawerComponent } from './components/shared/drawer/drawer.component';
 import { PopperDirective } from './popper.directive';
 import { IconPipe } from './pipes/lesson/icon.pipe';
 import { TitlePipe } from './pipes/lesson/title.pipe';
+import { TeacherHomeComponent } from './components/teacher-home/teacher-home.component';
+import { CourseReportComponent } from './components/course-report/course-report.component';
+import { StudentReportComponent } from './components/student-report/student-report.component';
+import { ClasePipe } from './pipes/teacher/clase.pipe';
+import { IdClasePipe } from './pipes/teacher/id-clase.pipe';
 import { ForumComponent } from './components/forum/forum.component';
 import { UserNamePipe } from './pipes/forum/user-name.pipe';
 
@@ -53,6 +58,11 @@ import { UserNamePipe } from './pipes/forum/user-name.pipe';
     PopperDirective,
     IconPipe,
     TitlePipe,
+    TeacherHomeComponent,
+    CourseReportComponent,
+    StudentReportComponent,
+    ClasePipe,
+    IdClasePipe,
     ForumComponent,
     UserNamePipe
   ],
