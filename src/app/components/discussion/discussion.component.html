@@ -56,7 +56,7 @@
                             <span class="avatar-title rounded-circle">{{ (ans?.uid | userName | async)?.charAt(0) }}</span>
                         </a>
                         <div class="flex">
-                            <a href="" class="text-body"><strong>{{ ans?.uid | userName | async }}</strong></a><br>
+                            <a href="" class="text-body"><strong>{{ ans?.uid | userName | async }}</strong> · {{ ans?.uid | userType | async }} </a><br>
                             <p class="mt-1 text-70">{{ ans?.text }}</p>
                             <div class="d-flex align-items-center">
                                 <small class="text-50 mr-2">27 min ago</small>

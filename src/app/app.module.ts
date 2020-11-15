@@ -38,6 +38,7 @@ import { ForumComponent } from './components/forum/forum.component';
 import { UserNamePipe } from './pipes/forum/user-name.pipe';
 import { DiscussionComponent } from './components/discussion/discussion.component';
 import { DiscussionAskComponent } from './components/discussion-ask/discussion-ask.component';
+import { UserTypePipe } from './pipes/forum/user-type.pipe';
 
 @NgModule({
   declarations: [
@@ -58,7 +59,8 @@ import { DiscussionAskComponent } from './components/discussion-ask/discussion-a
     ForumComponent,
     UserNamePipe,
     DiscussionComponent,
-    DiscussionAskComponent
+    DiscussionAskComponent,
+    UserTypePipe
   ],
   imports: [
     BrowserModule,
