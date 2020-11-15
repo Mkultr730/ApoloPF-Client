@@ -6,4 +6,5 @@ export interface Question {
   madeby: DocumentReference;
   question: string;
   answers: Array<Answer>;
+  details: string;
 }

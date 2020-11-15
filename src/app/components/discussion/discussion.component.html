@@ -17,16 +17,14 @@
                     <div class="d-flex">
                         <a href="" class="avatar avatar-sm avatar-online mr-12pt">
                             <!-- <img src="../../public/images/people/256/256_rsz_nicolas-horn-689011-unsplash.jpg" alt="people" class="avatar-img rounded-circle"> -->
-                            <span class="avatar-title rounded-circle">JD</span>
+                            <span class="avatar-title rounded-circle">{{ (question?.madeby | userName | async)?.charAt(0) }}</span>
                         </a>
                         <div class="flex">
                             <p class="d-flex align-items-center mb-2">
-                                <a href="" class="text-body mr-2"><strong>Jenell D. Matney</strong></a>
+                                <a href="" class="text-body mr-2"><strong>{{ question?.madeby | userName | async }}</strong></a>
                                 <small class="text-muted">2 min ago</small>
                             </p>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores beatae quisquam iste maiores libero, corrupti totam saepe itaque quidem perspiciatis?</p>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos culpa commodi consequuntur! Optio labore corporis quo a quia, incidunt unde soluta velit ad, eius exercitationem sequi ab laborum! Nostrum voluptate earum sit aperiam
-                                quaerat unde, vel excepturi quisquam nihil reprehenderit in minus laudantium eligendi odio iusto nemo, aspernatur, optio soluta!</p>
+                            <p> {{ question?.details }} </p>
                             <div class="d-flex align-items-center">
                                 <a href="" class="text-50 d-flex align-items-center text-decoration-0"><i class="material-icons mr-1"
                          style="font-size: inherit;">favorite_border</i> 30</a>
@@ -51,15 +49,15 @@
                     </div>
                 </div>
                 <div class="pt-3">
-                    <h4>2 Comments</h4>
-                    <div class="d-flex mb-3">
+                    <h4>{{ question?.answers.length }} comentarios</h4>
+                    <div *ngFor="let ans of question?.answers" class="d-flex mb-3">
                         <a href="" class="avatar avatar-sm mr-12pt">
                             <!-- <img src="../../public/images/people/256/256_rsz_karl-s-973833-unsplash.jpg" alt="people" class="avatar-img rounded-circle"> -->
-                            <span class="avatar-title rounded-circle">JF</span>
+                            <span class="avatar-title rounded-circle">{{ (ans?.uid | userName | async)?.charAt(0) }}</span>
                         </a>
                         <div class="flex">
-                            <a href="" class="text-body"><strong>Joseph S. Ferland</strong></a><br>
-                            <p class="mt-1 text-70">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero neque magnam modi corrupti in aliquid odit eligendi pariatur! Ad consequatur illo voluptates, dignissimos tenetur odit magni excepturi! Nesciunt, fuga, vel.</p>
+                            <a href="" class="text-body"><strong>{{ ans?.uid | userName | async }}</strong></a><br>
+                            <p class="mt-1 text-70">{{ ans?.text }}</p>
                             <div class="d-flex align-items-center">
                                 <small class="text-50 mr-2">27 min ago</small>
                                 <a href="" class="text-50"><small>Liked</small></a>
@@ -67,10 +65,10 @@
                         </div>
                     </div>
 
-                    <div class="ml-sm-32pt mt-3 card p-3">
+                    <!-- <div class="ml-sm-32pt mt-3 card p-3">
                         <div class="d-flex">
                             <a href="#" class="avatar avatar-sm mr-12pt">
-                                <!-- <img src="../../public/images/people/110/guy-6.jpg" alt="Guy" class="avatar-img rounded-circle"> -->
+                                <img src="../../public/images/people/110/guy-6.jpg" alt="Guy" class="avatar-img rounded-circle">
                                 <span class="avatar-title rounded-circle">FM</span>
                             </a>
                             <div class="flex">
@@ -88,7 +86,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
 
