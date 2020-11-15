@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Observable, Subscription } from 'rxjs';
 import { Question } from 'src/app/models/question.model';
+import { AuthService } from 'src/app/services/auth.service';
 import { ForumsService } from 'src/app/services/forums.service';
 
 @Component({
@@ -16,7 +18,9 @@ export class DiscussionComponent implements OnInit {
   grade: number;
   question: Question;
 
-  constructor(private route: ActivatedRoute, private forumService: ForumsService) { }
+  newAnswer = new FormControl('');
+
+  constructor(private route: ActivatedRoute, private forumService: ForumsService, private authService: AuthService) { }
 
   ngOnInit(): void {
     this.idSub = this.route.params.subscribe(params => {
@@ -27,6 +31,11 @@ export class DiscussionComponent implements OnInit {
     this.forumService.getQuestion(this.year, this.grade, this.questionId).subscribe( question => {
       this.question = question as Question;
     });
+  }
+
+  postComment() {
+    this.forumService.answerQuestion(this.questionId, this.authService.uid, this.newAnswer.value, this.grade, this.year)
+    this.newAnswer.setValue('');
   }
 
 }

@@ -13,7 +13,7 @@
                     <a href="#" class="text-50" style="text-decoration: underline;">Edit</a>
                 </p>
 
-                <div class="card card-body">
+                <div class="card card-body" *ngIf="question">
                     <div class="d-flex">
                         <a href="" class="avatar avatar-sm avatar-online mr-12pt">
                             <!-- <img src="../../public/images/people/256/256_rsz_nicolas-horn-689011-unsplash.jpg" alt="people" class="avatar-img rounded-circle"> -->
@@ -43,9 +43,9 @@
                     <div class="flex">
                         <div class="form-group">
                             <label for="comment" class="form-label">Your reply</label>
-                            <textarea class="form-control" name="comment" id="comment" rows="3" placeholder="Type here to reply to Matney ..."></textarea>
+                            <textarea class="form-control" [formControl]="newAnswer" name="comment" id="comment" rows="3" placeholder="Type here to reply to Matney ..."></textarea>
                         </div>
-                        <button class="btn btn-outline-secondary">Post comment</button>
+                        <button class="btn btn-outline-secondary" (click)="postComment()">Post comment</button>
                     </div>
                 </div>
                 <div class="pt-3">
