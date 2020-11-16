@@ -78,7 +78,7 @@
         <div class="list-group list-group-flush">
           <div class="list-group-item p-3" *ngFor="let clase of user.courses; index as i">
 
-            <div *ngIf="(clase | studentsCourse | async) as xyz" class="row align-items-start">
+            <div *ngIf="(clase | async) as xyz" class="row align-items-start">
               <div class="col-md-3 mb-8pt mb-md-0">
                 <div class="media align-items-center">
                   <div class="media-left mr-12pt">
