@@ -1,4 +1,6 @@
+import { DocumentReference } from '@angular/fire/firestore';
+
 export interface Answer{
-    uid:string;
+    uid:DocumentReference;
     text:string;
 }
