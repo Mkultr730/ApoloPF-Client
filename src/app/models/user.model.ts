@@ -6,7 +6,7 @@ export interface User{
     photoURL?: string;
     role?: string;
     authType: number;
-    courses?: string[];
+    courses?: Array<DocumentReference>;
     Course?: DocumentReference;
     displayName?: string;
 }
