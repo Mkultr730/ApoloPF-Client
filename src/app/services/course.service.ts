@@ -103,7 +103,7 @@ export class CourseService {
     await studentRef.get().toPromise().then(doc => {
       if (doc.exists) {
         studentInfo = doc.data() as User;
-        studentInfo.course = courseid;
+        studentInfo.Course = courseRef.ref;
       } else {
         console.log('No such document!');
       }
@@ -177,7 +177,7 @@ export class CourseService {
     await studentid.get().then(doc => {
       if (doc.exists) {
         studentInfo = doc.data() as User;
-        delete studentInfo.course;
+        delete studentInfo.Course;
       } else {
         console.log('No such document!');
       }
