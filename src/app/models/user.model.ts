@@ -1,4 +1,5 @@
 import { DocumentReference } from '@angular/fire/firestore';
+import { LessonAttempt } from './attempts';
 
 export interface User{
     uid: string;
@@ -9,4 +10,5 @@ export interface User{
     courses?: Array<DocumentReference>;
     Course?: DocumentReference;
     displayName?: string;
+    lessons?: Array<LessonAttempt>;
 }
