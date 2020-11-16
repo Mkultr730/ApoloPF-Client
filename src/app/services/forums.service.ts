@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { Observable } from 'rxjs';
 import { Question } from '../models/question.model';
 import { User } from '../models/user.model';
 
@@ -16,19 +17,21 @@ export class ForumsService {
     return this.afs.doc<User>(`users/${uid}`).valueChanges();
   }
 
-  newQuestion(question: string, uid: string, year: number, schoolYYYY: number) {
+  newQuestion(question: string, uid: string, year: number, schoolYYYY: number, details: string) {
     return this.afs.collection(`forums/${year}/${schoolYYYY}/`).add({
-      madeby: uid,
-      text: question,
-      answers: []
+      answers: [],
+      details: details,
+      madeby: this.afs.doc(`users/${uid}`).ref,
+      question: question,
     });
   }
 
-  answerQuestion(questionid: string, userid: string, textanswer: string, year: number, schoolYYYY: number) {
-    const questionRef = this.afs.collection(`forums/${year}/${schoolYYYY}`).doc<Question>(questionid);
-    questionRef.valueChanges().subscribe(question => {
-      question.answers.push({ uid: userid, text: textanswer });
-      questionRef.update({ answers: question.answers });
+  answerQuestion(questionid: string, userid: string, textanswer: string, grade: number, year: number) {
+    const questionRef = this.afs.doc<Question>(`/forums/${year}/${grade}/${questionid}`);
+    questionRef.get().subscribe(question => {
+      const questionVal = question.data() as  Question;
+      questionVal.answers.push({ uid: this.afs.doc(`users/${userid}`).ref, text: textanswer });
+      questionRef.update({ answers: questionVal.answers });
     });
   }
 
@@ -37,8 +40,13 @@ export class ForumsService {
   }
 
   getQuestions(year: number, schoolYYYY: number) {
-    return this.afs.collection<Question>(`forums/${year}/${schoolYYYY}`).valueChanges();
+    return this.afs.collection<Question>(`forums/${year}/${schoolYYYY}`).valueChanges({idField: 'id'});
   }
+
+  getQuestion(year: number, schoolYYYY: number, questionId: string) {
+    return this.afs.collection<Question>(`forums/${year}/${schoolYYYY}`).doc(questionId).valueChanges();
+  }
+
 }
 
 

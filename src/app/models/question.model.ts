@@ -4,6 +4,7 @@ import { Answer } from './answer.model';
 export interface Question {
   id: string;
   madeby: DocumentReference;
-  text: string;
+  question: string;
   answers: Array<Answer>;
+  details: string;
 }
