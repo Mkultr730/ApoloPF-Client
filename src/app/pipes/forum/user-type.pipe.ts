@@ -3,13 +3,13 @@ import { DocumentReference } from '@angular/fire/firestore';
 import { User } from 'src/app/models/user.model';
 
 @Pipe({
-  name: 'userName'
+  name: 'userType'
 })
-export class UserNamePipe implements PipeTransform {
+export class UserTypePipe implements PipeTransform {
 
   transform(value: DocumentReference): Promise<string> {
     return value?.get().then(userSnap => {
-      return (userSnap.data() as User).displayName;
+      return (userSnap.data() as User).role === 'student'? 'Estudiante' : 'Profesor';
     });
   }
 

@@ -18,6 +18,7 @@ import { Router } from '@angular/router';
 export class AuthService {
 
   user$: Observable<User>;
+  uid: string;
 
   constructor(
       private afAuth: AngularFireAuth,
@@ -28,6 +29,7 @@ export class AuthService {
       switchMap(user => {
           // Logged in
         if (user) {
+          this.uid = user.uid;
           return this.afs.doc<User>(`users/${user.uid}`).valueChanges();
         } else {
           // Logged out

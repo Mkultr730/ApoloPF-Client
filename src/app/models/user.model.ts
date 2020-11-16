@@ -7,6 +7,6 @@ export interface User{
     role?: string;
     authType: number;
     courses?: Array<DocumentReference>;
-    course?: string;
+    Course?: DocumentReference;
     displayName?: string;
 }
