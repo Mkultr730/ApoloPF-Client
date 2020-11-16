@@ -14,7 +14,7 @@ export class StudentReportComponent implements OnInit {
   cid: string;
   eid: string;
   student: Observable<User>;
-  constructor(private route: ActivatedRoute, private forumsService:ForumsService) { }
+  constructor(private route: ActivatedRoute, private forumsService: ForumsService) { }
 
   ngOnInit(): void {
     this.eid = this.route.snapshot.paramMap.get('eid');
