@@ -36,6 +36,7 @@ import { IconPipe } from './pipes/lesson/icon.pipe';
 import { TitlePipe } from './pipes/lesson/title.pipe';
 import { ForumComponent } from './components/forum/forum.component';
 import { UserNamePipe } from './pipes/forum/user-name.pipe';
+import { SeccionPipe } from './pipes/exercises/seccion.pipe';
 
 @NgModule({
   declarations: [
@@ -54,7 +55,8 @@ import { UserNamePipe } from './pipes/forum/user-name.pipe';
     IconPipe,
     TitlePipe,
     ForumComponent,
-    UserNamePipe
+    UserNamePipe,
+    SeccionPipe
   ],
   imports: [
     BrowserModule,

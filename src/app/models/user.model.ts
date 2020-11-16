@@ -1,3 +1,5 @@
+import { LessonAttempt } from './attempts';
+
 export interface User{
     uid: string;
     email: string;
@@ -7,4 +9,5 @@ export interface User{
     courses?: string[];
     Course?: string;
     displayName?: string;
+    lessons?: Array<LessonAttempt>;
 }
