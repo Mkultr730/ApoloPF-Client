@@ -44,6 +44,7 @@ import { UserNamePipe } from './pipes/forum/user-name.pipe';
 import { DiscussionComponent } from './components/discussion/discussion.component';
 import { DiscussionAskComponent } from './components/discussion-ask/discussion-ask.component';
 import { UserTypePipe } from './pipes/forum/user-type.pipe';
+import { StudentsCoursePipe } from './pipes/teacher/students-course.pipe';
 
 @NgModule({
   declarations: [
@@ -70,7 +71,8 @@ import { UserTypePipe } from './pipes/forum/user-type.pipe';
     UserNamePipe,
     DiscussionComponent,
     DiscussionAskComponent,
-    UserTypePipe
+    UserTypePipe,
+    StudentsCoursePipe
   ],
   imports: [
     BrowserModule,

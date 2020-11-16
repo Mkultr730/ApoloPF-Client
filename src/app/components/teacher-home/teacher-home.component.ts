@@ -17,11 +17,5 @@ export class TeacherHomeComponent implements OnInit {
   ngOnInit(): void {
       this.user = this.authservice.user$;
       this.user.subscribe(user => { console.log(user); });
-      // this.courseService.listCourses(2020).then(cursos => {
-      //   console.log(cursos);
-      //   this.Cursos = cursos;
-      // });
-
   }
-
 }

@@ -1,3 +1,4 @@
+import { StudentReportComponent } from './components/student-report/student-report.component';
 import { CourseReportComponent } from './components/course-report/course-report.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
@@ -21,6 +22,7 @@ const routes: Routes = [
   { path: 'admin', component: AdminComponent, canActivate: [AuthGuard, AdminGuard] },
   { path: 'profesor', component: TeacherHomeComponent},
   { path: ':profesorid/:cid', component: CourseReportComponent},
+  { path: ':profesorid/:cid/:eid', component: StudentReportComponent},
   { path: 'forum', component: ForumComponent, canActivate: [AuthGuard] },
   { path: 'forum/:year/:grade/:id', component: DiscussionComponent, canActivate: [AuthGuard] },
   { path: 'ask-question', component: DiscussionAskComponent, canActivate: [AuthGuard] },
