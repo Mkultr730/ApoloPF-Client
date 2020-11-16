@@ -71,7 +71,7 @@ import { SeccionPipe } from './pipes/exercises/seccion.pipe';
     UserNamePipe,
     DiscussionComponent,
     DiscussionAskComponent,
-    UserTypePipe
+    UserTypePipe,
     SeccionPipe
   ],
   imports: [

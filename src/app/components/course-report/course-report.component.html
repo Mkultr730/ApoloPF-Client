@@ -1,1 +1,205 @@
-<p>course-report works!</p>
+<!-- Drawer Layout -->
+<div class="mdk-drawer-layout__content page-content">
+  <div class="pt-32pt">
+    <div class="container page__container d-flex flex-column flex-md-row align-items-center text-center text-sm-left">
+      <div class="flex d-flex flex-column flex-sm-row align-items-center mb-24pt mb-md-0">
+        <div class="mb-24pt mb-sm-0 mr-sm-24pt">
+          <h2 class="mb-0">Dashboard</h2>
+          <ol class="breadcrumb p-0 m-0">
+            <li class="breadcrumb-item"><a href="/profesor">Home</a></li>
+            <li class="breadcrumb-item active">Dashboard</li>
+          </ol>
+        </div>
+      </div>
+      <div class="row" role="tablist">
+        <div class="col-auto">
+          <a href="/profesor" class="btn btn-outline-secondary">Mis cursos</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Page Content -->
+  <div class="container page__container">
+    <div class="page-section">
+      <div class="page-separator">
+        <div class="page-separator__text">Resumen</div>
+      </div>
+      <div class="row mb-lg-8pt">
+        <div class="col-lg-6">
+          <div class="card">
+            <div class="card-header d-flex align-items-center">
+              <div class="h2 mb-0 mr-3">116</div>
+              <div class="flex">
+                <p class="card-title">Angular</p>
+                <p class="card-subtitle text-50">Best score</p>
+              </div>
+              <div class="dropdown">
+                <a href="#" class="btn btn-sm btn-outline-secondary dropdown-toggle" data-toggle="dropdown">Popular
+                  Topics</a>
+                <div class="dropdown-menu dropdown-menu-right">
+                  <a href="" class="dropdown-item">Popular Topics</a>
+                  <a href="" class="dropdown-item">Web Design</a>
+                </div>
+              </div>
+            </div>
+            <div class="card-body p-24pt">
+              <div class="chart" style="height: 344px;">
+                <canvas id="topicIqChart" class="chart-canvas js-update-chart-line" data-chart-hide-axes="true"
+                  data-chart-points="true" data-chart-suffix=" points" data-chart-line-border-color="primary"></canvas>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="card">
+            <div class="card-header d-flex align-items-center border-0">
+              <div class="h2 mb-0 mr-3">432</div>
+              <div class="flex">
+                <p class="card-title">Experience IQ</p>
+                <p class="card-subtitle text-50">4 days streak this week</p>
+              </div>
+              <i class="material-icons text-muted ml-2">trending_up</i>
+            </div>
+            <div class="card-body pt-0">
+              <div class="chart" style="height: 128px;">
+                <canvas id="iqChart" class="chart-canvas js-update-chart-line" data-chart-hide-axes="false"
+                  data-chart-points="true" data-chart-suffix="pt" data-chart-line-border-color="primary"></canvas>
+              </div>
+            </div>
+          </div>
+
+
+        </div>
+      </div>
+      <div class="page-separator">
+        <div class="page-separator__text">Estudiantes</div>
+      </div>
+      <div class="card" *ngIf="user | async as user">
+        <div class="list-group list-group-flush">
+          <div class="list-group-item p-3" *ngFor="let clase of user.courses; index as i">
+
+            <div *ngIf="(clase | studentsCourse | async) as xyz" class="row align-items-start">
+              <div class="col-md-3 mb-8pt mb-md-0">
+                <div class="media align-items-center">
+                  <div class="media-left mr-12pt">
+                    <a href="" class="avatar avatar-sm">
+                      <!-- <img src="../../LB" alt="avatar" class="avatar-img rounded-circle"> -->
+                      <span class="avatar-title rounded-circle">LB</span>
+                    </a>
+                  </div>
+                  <div class="d-flex flex-column media-body media-middle">
+                    <a href="" class="card-title">{{xyz.coursename}}</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-footer p-8pt">
+          <ul class="pagination justify-content-start pagination-xsm m-0">
+            <li class="page-item disabled">
+              <a class="page-link" href="#" aria-label="Previous">
+                <span aria-hidden="true" class="material-icons">chevron_left</span>
+                <span>Prev</span>
+              </a>
+            </li>
+            <li class="page-item">
+              <a class="page-link" href="#" aria-label="Page 1">
+                <span>1</span>
+              </a>
+            </li>
+            <li class="page-item">
+              <a class="page-link" href="#" aria-label="Page 2">
+                <span>2</span>
+              </a>
+            </li>
+            <li class="page-item">
+              <a class="page-link" href="#" aria-label="Next">
+                <span>Next</span>
+                <span aria-hidden="true" class="material-icons">chevron_right</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="page-separator">
+        <div class="page-separator__text">Foro</div>
+      </div>
+
+      <div class="card">
+
+        <div  *ngFor="let question of questions | async" class="list-group list-group-flush">
+
+          <div  class="list-group-item p-3">
+            <div class="row align-items-start">
+              <div class="col-md-3 mb-8pt mb-md-0">
+                <div class="media align-items-center">
+                  <div class="media-left mr-12pt">
+                    <a href="" class="avatar avatar-sm">
+                      <!-- <img src="LB" alt="avatar" class="avatar-img rounded-circle"> -->
+                      <span
+                        class="avatar-title rounded-circle">{{ (question.madeby | userName | async)?.charAt(0) }}</span>
+                    </a>
+                  </div>
+                  <div class="d-flex flex-column media-body media-middle">
+                    <h2 class="card-title">{{ question.madeby | userName | async }} </h2>
+                    <small class="text-muted">2 days ago</small>
+                  </div>
+                </div>
+              </div>
+              <div class="col mb-8pt mb-md-0">
+                <p class="mb-8pt"><a routerLink="/forum/2020/4/{{question.id}}"
+                    class="text-body"><strong>{{ question.question }}</strong></a></p>
+
+                <a href="discussion.html" class="chip chip-outline-secondary">Angular fundamentals</a>
+
+              </div>
+              <div class="col-auto d-flex flex-column align-items-center justify-content-center">
+                <h5 class="m-0">{{ question.answers.length }}</h5>
+                <p class="lh-1 mb-0"><small
+                    class="text-70">{{ question.answers.length>1? 'respuestas': 'respuesta' }}</small></p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-footer p-8pt">
+
+          <ul class="pagination justify-content-start pagination-xsm m-0">
+            <li class="page-item disabled">
+              <a class="page-link" href="#" aria-label="Previous">
+                <span aria-hidden="true" class="material-icons">chevron_left</span>
+                <span>Prev</span>
+              </a>
+            </li>
+            <li class="page-item">
+              <a class="page-link" href="#" aria-label="Page 1">
+                <span>1</span>
+              </a>
+            </li>
+            <li class="page-item">
+              <a class="page-link" href="#" aria-label="Page 2">
+                <span>2</span>
+              </a>
+            </li>
+            <li class="page-item">
+              <a class="page-link" href="#" aria-label="Next">
+                <span>Next</span>
+                <span aria-hidden="true" class="material-icons">chevron_right</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- // END Page Content -->
+
+</div>
+
+<!-- // END drawer-layout__content -->
+
+
+<!-- // END Drawer Layout -->

@@ -1,4 +1,9 @@
+import { Observable } from 'rxjs';
+import { ForumsService } from './../../services/forums.service';
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { firestore } from 'firebase';
+import { User } from 'src/app/models/user.model';
 
 @Component({
   selector: 'app-student-report',
@@ -6,10 +11,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./student-report.component.scss']
 })
 export class StudentReportComponent implements OnInit {
-
-  constructor() { }
+  cid: string;
+  eid: string;
+  student: Observable<User>;
+  constructor(private route: ActivatedRoute, private forumsService:ForumsService) { }
 
   ngOnInit(): void {
+    this.eid = this.route.snapshot.paramMap.get('eid');
+    this.cid = this.route.snapshot.paramMap.get('cid');
+    this.student = this.forumsService.getUserInfo(this.eid);
   }
 
 }
