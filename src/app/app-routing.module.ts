@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AdminComponent } from './components/admin/admin.component';
 import { ExercisesComponent } from './components/exercises/exercises.component';
+import { ForumComponent } from './components/forum/forum.component';
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 import { TeacherHomeComponent } from './components/teacher-home/teacher-home.component';
@@ -18,6 +19,7 @@ const routes: Routes = [
   { path: 'admin', component: AdminComponent, canActivate: [AuthGuard, AdminGuard] },
   { path: 'profesor', component: TeacherHomeComponent},
   { path: ':profesorid/:cid', component: CourseReportComponent},
+  { path: 'forum', component: ForumComponent, canActivate: [AuthGuard] },
   { path: '**', redirectTo: '' },
 ];
 

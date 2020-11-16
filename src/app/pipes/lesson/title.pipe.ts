@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { Leccion } from 'src/app/interfaces/leccion';
+import { Leccion } from 'src/app/models/leccion';
 
 @Pipe({
   name: 'title'
