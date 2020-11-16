@@ -29,6 +29,22 @@ import { GoalComponent } from './components/shared/goal/goal.component';
 import { NotesComponent } from './components/shared/notes/notes.component';
 import { RightInfoComponent } from './components/shared/right-info/right-info.component';
 import { AdminComponent } from './components/admin/admin.component';
+import { HeaderComponent } from './components/shared/header/header.component';
+import { DrawerComponent } from './components/shared/drawer/drawer.component';
+import { PopperDirective } from './popper.directive';
+import { IconPipe } from './pipes/lesson/icon.pipe';
+import { TitlePipe } from './pipes/lesson/title.pipe';
+import { TeacherHomeComponent } from './components/teacher-home/teacher-home.component';
+import { CourseReportComponent } from './components/course-report/course-report.component';
+import { StudentReportComponent } from './components/student-report/student-report.component';
+import { ClasePipe } from './pipes/teacher/clase.pipe';
+import { IdClasePipe } from './pipes/teacher/id-clase.pipe';
+import { ForumComponent } from './components/forum/forum.component';
+import { UserNamePipe } from './pipes/forum/user-name.pipe';
+import { DiscussionComponent } from './components/discussion/discussion.component';
+import { DiscussionAskComponent } from './components/discussion-ask/discussion-ask.component';
+import { UserTypePipe } from './pipes/forum/user-type.pipe';
+import { SeccionPipe } from './pipes/exercises/seccion.pipe';
 
 @NgModule({
   declarations: [
@@ -40,7 +56,23 @@ import { AdminComponent } from './components/admin/admin.component';
     GoalComponent,
     NotesComponent,
     RightInfoComponent,
-    AdminComponent
+    AdminComponent,
+    HeaderComponent,
+    DrawerComponent,
+    PopperDirective,
+    IconPipe,
+    TitlePipe,
+    TeacherHomeComponent,
+    CourseReportComponent,
+    StudentReportComponent,
+    ClasePipe,
+    IdClasePipe,
+    ForumComponent,
+    UserNamePipe,
+    DiscussionComponent,
+    DiscussionAskComponent,
+    UserTypePipe,
+    SeccionPipe
   ],
   imports: [
     BrowserModule,

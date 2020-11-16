@@ -1,25 +1,103 @@
-<div class="container custom-container">
-  <div class="row">
-    <div class="col-8">
-      <mat-icon class="back-button" aria-hidden="false" aria-label="Example home icon">arrow_back</mat-icon>
-      <!-- List of Lessons to Display - fix!: Component Needed -->
-      <div *ngFor="let e of enunciados" class="custom-card">
-        <div class="card-title">
-          <h4>{{ e.payload.doc.data().enunciado }}</h4>
+<div class="navbar navbar-list navbar-light bg-white border-bottom-2 border-bottom navbar-expand-sm"
+  style="white-space: nowrap;">
+  <div class="container page__container">
+    <nav class="nav navbar-nav">
+      <div class="nav-item navbar-list__item">
+        <a (click)="backButton()" class="nav-link h-auto"><i class="material-icons icon--left">keyboard_backspace</i>
+          Volver al curso</a>
+      </div>
+      <div class="nav-item navbar-list__item">
+        <div class="d-flex align-items-center flex-nowrap">
+          <div class="mr-16pt">
+            <img [src]="lesson | async | icon" width="40" alt="{{(lesson | async)?.titulo}}" class="rounded">
+          </div>
+          <div class="flex">
+            <p class="card-title text-body mb-0">{{ lesson | async | title }}</p>
+          </div>
         </div>
-        <div class="card-content">
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod corrupti voluptates tempore molestiae doloribus deleniti debitis, eaque sint repellendus impedit corporis reiciendis accusantium commodi quos rem fugiat veritatis placeat quae.</p>
-          <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Temporibus dolores libero ad fugit maiores? Tempora magni vero ipsum modi in totam earum, error inventore veniam sapiente ab repudiandae voluptate ut?</p>
+      </div>
+    </nav>
+  </div>
+</div>
+<div *ngIf="sections.controls.length > 1" class="bg-primary pb-4pt pt-32pt counter">
+  <div class="container page__container">
+    <nav class="course-nav">
+      <div *ngFor="let j of [].constructor(sections.controls.length); let k = index">
+        <span class="material-icons"
+          [ngClass]="{'text-success': k < currentQuestion, 'text-primary': k === currentQuestion}">help</span>
+      </div>
+    </nav>
+  </div>
+</div>
+<form [formGroup]="form" *ngFor="let seccion of sections.controls; let i = index; let l = count" class="section"
+  [ngClass]="{'d-none': i != currentQuestion}">
+  <ng-container formArrayName="sections">
+    <div class="bg-primary pb-lg-64pt pt-8pt">
+      <div class="container page__container">
+        <div class="js-player bg-primary embed-responsive embed-responsive-16by9 mb-32pt"
+          data-domfactory-upgraded="player">
+          <div class="player embed-responsive-item">
+            <div class="player__content">
+              <div class="player__image" style="--player-image: url(public/images/illustration/player.svg)"></div>
+              <a href="" class="player__play bg-primary">
+                <span class="material-icons">play_arrow</span>
+              </a>
+            </div>
+            <div class="player__embed d-none">
+              <iframe class="embed-responsive-item"
+                src="https://player.vimeo.com/video/97243285?title=0&amp;byline=0&amp;portrait=0"
+                allowfullscreen=""></iframe>
+            </div>
+          </div>
+        </div>
 
-          <div class="info">
-            <a>
-              <img src="/assets/icons/CONTENT/magnifying_glass.svg">
-              Más información
-            </a>
+        <div class="d-flex flex-wrap align-items-end justify-content-end mb-16pt">
+          <h1 class="text-white flex m-0">Sección {{i + 1}} de {{l}}</h1>
+          <p class="h1 text-white-50 font-weight-light m-0">{{ time }}</p>
+        </div>
+
+        <p class="hero__lead measure-hero-lead text-white">{{ seccion.get('enunciado').value }}</p>
+        <button class="btn btn-white">Reproducir Audio</button>
+      </div>
+    </div>
+    <div class="navbar navbar-expand-md navbar-list navbar-light bg-white border-bottom-2 "
+      style="white-space: nowrap;">
+      <div class="container page__container">
+        <ul class="nav navbar-nav flex navbar-list__item">
+          <li class="nav-item">
+            <i class="material-icons text-50 mr-8pt">tune</i>
+            Escoge la opción correcta:
+          </li>
+        </ul>
+        <div class="nav navbar-nav ml-sm-auto navbar-list__item">
+          <div class="nav-item d-flex flex-column flex-sm-row ml-sm-16pt">
+            <button (click)="nextQuestion()"
+              class="btn justify-content-center btn-accent w-100 w-sm-auto mb-16pt mb-sm-0 ml-sm-16pt">
+              {{ currentQuestion < l - 1 ? 'Siguente pregunta' : 'Enviar' }}
+              <i class="material-icons icon--right">keyboard_arrow_right</i>
+            </button>
           </div>
         </div>
       </div>
     </div>
-    <app-right-info class="col-4"></app-right-info>
-  </div>
-</div>
+    <div [formGroupName]="i"  class="container page__container">
+      <ng-container formArrayName="questions">
+        <div *ngFor="let pregunta of getPreguntas(seccion).controls; let m = index" class="page-section">
+          <div class="page-separator">
+            <div class="page-separator__text">{{ pregunta.get('pregunta').value }}</div>
+          </div>
+          <ng-container [formGroupName]="m">
+            <div *ngFor="let opcion of pregunta.get('opciones').value; let n = index" class="form-group">
+              <div class="custom-control custom-radio">
+                <input formControlName="chosen" id="opcion{{n}}pregunta{{m}}seccion{{i}}" type="radio" class="custom-control-input" [value]="opcion">
+                <label for="opcion{{n}}pregunta{{m}}seccion{{i}}" class="custom-control-label" >{{opcion}}</label>
+              </div>
+            </div>
+          </ng-container>
+        </div>
+      </ng-container>
+    </div>
+  </ng-container>
+</form>
+
+<pre>{{ form.getRawValue() | json }}</pre>
