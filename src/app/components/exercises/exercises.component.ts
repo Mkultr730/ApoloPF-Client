@@ -173,7 +173,7 @@ export class ExercisesComponent implements OnInit {
         currentLesson.attempts.push(attempt);
       } else {
         currentLesson = {
-          id: this.firestore.doc(`/lessons/${this.lessonId}`).ref,
+          id: this.firestore.doc(`/lecciones/${this.lessonId}`).ref,
           attempts: [attempt]
         };
         if (lessons) {
