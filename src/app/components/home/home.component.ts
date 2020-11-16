@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFirestore } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
+import { Course } from 'src/app/models/course.model';
 import { Leccion } from 'src/app/models/leccion';
+import { User } from 'src/app/models/user.model';
 import { LessonsService } from 'src/app/services/lessons/lessons.service';
 
 @Component({
