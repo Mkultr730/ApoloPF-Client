@@ -1,1 +1,51 @@
-<p>admin works!</p>
+<div class="my-32pt container custom-container">
+    <div class="page-separator">
+        <div class="page-separator__text">Cursos del año actual</div>
+    </div>
+    <div class="row card-group-row mb-lg-8pt">
+        <div *ngFor="let course of courses | async | sortCourses" class="col-sm-4 card-group-row__col">
+            <div class="card card-sm stack stack--1 card-group-row__card">
+                <div class="card-body d-flex flex-column">
+                    <div class="d-flex align-items-center">
+                        <div class="flex">
+                            <div class="d-flex align-items-center">
+                                <div class="flex">
+                                    <div class="card-title">{{ course.coursename }}</div>
+                                    <p *ngFor="let teacher of course.teacher" class="flex text-50 lh-1 mb-0"><small>{{ teacher | teacherName | async  }}</small></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="mb-32pt">
+
+        <ul class="pagination justify-content-start pagination-xsm m-0">
+            <li class="page-item disabled">
+                <a class="page-link" href="#" aria-label="Previous">
+                    <span aria-hidden="true" class="material-icons">chevron_left</span>
+                    <span>Prev</span>
+                </a>
+            </li>
+            <li class="page-item">
+                <a class="page-link" href="#" aria-label="Page 1">
+                    <span>1</span>
+                </a>
+            </li>
+            <li class="page-item">
+                <a class="page-link" href="#" aria-label="Page 2">
+                    <span>2</span>
+                </a>
+            </li>
+            <li class="page-item">
+                <a class="page-link" href="#" aria-label="Next">
+                    <span>Next</span>
+                    <span aria-hidden="true" class="material-icons">chevron_right</span>
+                </a>
+            </li>
+        </ul>
+
+    </div>
+</div>

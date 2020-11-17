@@ -1,49 +1,49 @@
 <div class="container custom-container">
-    <div class="row">
-        <div class="col-8 lessons-container">
-            <!-- List of Lessons to Display - fix!: Component Needed -->
+  <div class="row">
+    <div class="col-8 lessons-container">
+      <!-- List of Lessons to Display - fix!: Component Needed -->
 
-            <div *ngFor="let lesson of lessons | async; index as i" class="lesson-container">
-                <!-- <pre>{{lesson | json }}</pre> -->
-                <div class="lesson">
-                    <img class="lesson-icon" src="{{lesson.icon}}" alt="">
-                </div>
-                <div class="bubble-container">
-                    
-                    <div class="lesson-info">
-                        <div>
-                        <div class="media">
-                            <div class="media-left mr-12pt">
-                                <img src="{{lesson.icon}}" width="40" height="40" alt="Angular" class="rounded">
-                            </div>
-                            <div class="media-body">
-                                <div class="card-title mb-0">{{lesson.titulo}}</div>
-                                <p class="lh-1 mb-0">
-                                    <span class="text-50 small">{{lesson.year}}° </span>
-                                    <span class="text-50 small font-weight-bold">grado</span>
-                                </p>
-                            </div>
-                        </div>
-                
-                        <p *ngFor="let parrafo of lesson.enunciado?.split(';')" class="my-16pt text-70">{{parrafo}}</p>
-                
-                        <div class="mb-16pt">
-                            <div *ngFor="let objetivo of lesson.objetivos" class="d-flex align-items-center">
-                                <span class="material-icons icon-16pt text-50 mr-8pt">check</span>
-                                <p class="flex text-50 lh-1 mb-0"><small>{{objetivo}}</small></p>
-                            </div>
-                        </div>
-                
-                        <div class="row align-items-center">
-                            <div class="col text-right">
-                                <a routerLink="prueba/{{lesson.id}}" class="btn btn-primary">Abrir Lección</a>
-                            </div>
-                        </div>
-                    </div>
-                    </div>
-                </div>
-            </div>
+      <div *ngFor="let lesson of lessons | async; index as i" class="lesson-container">
+        <!-- <pre>{{lesson | json }}</pre> -->
+        <div class="lesson">
+          <img class="lesson-icon" src="{{lesson.icon}}" alt="">
         </div>
-        <app-right-info class="col-4"></app-right-info>
+        <div class="bubble-container">
+
+          <div class="lesson-info">
+            <div>
+              <div class="media">
+                <div class="media-left mr-12pt">
+                  <img src="{{lesson.icon}}" width="40" height="40" alt="Angular" class="rounded">
+                </div>
+                <div class="media-body">
+                  <div class="card-title mb-0">{{lesson.titulo}}</div>
+                  <p class="lh-1 mb-0">
+                    <span class="text-50 small">{{lesson.year}}° </span>
+                    <span class="text-50 small font-weight-bold">grado</span>
+                  </p>
+                </div>
+              </div>
+
+              <!-- <p *ngFor="let parrafo of lesson.enunciado?.split(';')" class="my-16pt text-70">{{parrafo}}</p> -->
+
+              <div class="my-16pt">
+                <div *ngFor="let objetivo of lesson.objetivos" class="d-flex align-items-center">
+                  <span class="material-icons icon-16pt text-50 mr-8pt">check</span>
+                  <p class="flex text-50 lh-1 mb-0"><small>{{objetivo}}</small></p>
+                </div>
+              </div>
+
+              <div class="row align-items-center">
+                <div class="col text-right">
+                  <a routerLink="prueba/{{lesson.id}}" class="btn btn-primary">Abrir Lección</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+    <app-right-info class="col-4"></app-right-info>
+  </div>
 </div>
