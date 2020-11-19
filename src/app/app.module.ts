@@ -47,6 +47,7 @@ import { UserTypePipe } from './pipes/forum/user-type.pipe';
 import { SeccionPipe } from './pipes/exercises/seccion.pipe';
 import { SortCoursesPipe } from './pipes/admin/sort-courses.pipe';
 import { TeacherNamePipe } from './pipes/admin/teacher-name.pipe';
+import { LessonObjectPipe } from './pipes/studentreport/lesson-object.pipe';
 
 @NgModule({
   declarations: [
@@ -76,7 +77,8 @@ import { TeacherNamePipe } from './pipes/admin/teacher-name.pipe';
     UserTypePipe,
     SeccionPipe,
     SortCoursesPipe,
-    TeacherNamePipe
+    TeacherNamePipe,
+    LessonObjectPipe
   ],
   imports: [
     BrowserModule,

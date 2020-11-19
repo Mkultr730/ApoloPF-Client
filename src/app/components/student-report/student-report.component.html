@@ -1,82 +1,73 @@
 <!-- Drawer Layout -->
 <div class="mdk-drawer-layout__content page-content">
-  <div class="pt-32pt">
-    <div class="container page__container d-flex flex-column flex-md-row align-items-center text-center text-sm-left">
-      <div class="flex d-flex flex-column flex-sm-row align-items-center mb-24pt mb-md-0">
-        <div class="mb-24pt mb-sm-0 mr-sm-24pt">
-          <h2 class="mb-0">Dashboard</h2>
-          <ol class="breadcrumb p-0 m-0">
-            <li class="breadcrumb-item"><a href="/profesor">Home</a></li>
-            <li class="breadcrumb-item"><a href="/profesor">Dashboard</a></li>
-            <li class="breadcrumb-item"><a href="/profesor/{{cid}}">Curso</a></li>
-            <li class="breadcrumb-item active">Estudiante</li>
-          </ol>
-        </div>
-      </div>
-      <div class="row" role="tablist">
-        <div class="col-auto">
-          <a href="/profesor/{{cid}}" class="btn btn-outline-secondary">Volver</a>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- Page Content -->
-  <div class="container page__container">
-    <div class="page-section"  *ngIf="student | async as student">
-      <div class="page-separator">
-        <div class="page-separator__text">{{student.displayName}}</div>
-      </div>
-      <div class="row mb-lg-8pt">
-        <div class="col-lg-6">
-          <div class="card">
-            <div class="card-header d-flex align-items-center">
-              <div class="h2 mb-0 mr-3">116</div>
-              <div class="flex">
-                <p class="card-title">Angular</p>
-                <p class="card-subtitle text-50">Best score</p>
-              </div>
-              <div class="dropdown">
-                <a href="#" class="btn btn-sm btn-outline-secondary dropdown-toggle" data-toggle="dropdown">Popular
-                  Topics</a>
-                <div class="dropdown-menu dropdown-menu-right">
-                  <a href="" class="dropdown-item">Popular Topics</a>
-                  <a href="" class="dropdown-item">Web Design</a>
+    <div class="pt-32pt">
+        <div class="container page__container d-flex flex-column flex-md-row align-items-center text-center text-sm-left">
+            <div class="flex d-flex flex-column flex-sm-row align-items-center mb-24pt mb-md-0">
+                <div class="mb-24pt mb-sm-0 mr-sm-24pt">
+                    <h2 class="mb-0">Dashboard</h2>
+                    <ol class="breadcrumb p-0 m-0">
+                        <li class="breadcrumb-item"><a href="/profesor">Home</a></li>
+                        <li class="breadcrumb-item"><a href="/profesor">Dashboard</a></li>
+                        <li class="breadcrumb-item"><a href="/profesor/{{cid}}">Curso</a></li>
+                        <li class="breadcrumb-item active">Estudiante</li>
+                    </ol>
                 </div>
-              </div>
             </div>
-            <div class="card-body p-24pt">
-              <div class="chart" style="height: 344px;">
-                <canvas id="topicIqChart" class="chart-canvas js-update-chart-line" data-chart-hide-axes="true"
-                  data-chart-points="true" data-chart-suffix=" points" data-chart-line-border-color="primary"></canvas>
-              </div>
+            <div class="row" role="tablist">
+                <div class="col-auto">
+                    <a href="/profesor/{{cid}}" class="btn btn-outline-secondary">Volver</a>
+                </div>
             </div>
-          </div>
         </div>
-        <div class="col-lg-6">
-          <div class="card">
-            <div class="card-header d-flex align-items-center border-0">
-              <div class="h2 mb-0 mr-3">432</div>
-              <div class="flex">
-                <p class="card-title">Experience IQ</p>
-                <p class="card-subtitle text-50">4 days streak this week</p>
-              </div>
-              <i class="material-icons text-muted ml-2">trending_up</i>
-            </div>
-            <div class="card-body pt-0">
-              <div class="chart" style="height: 128px;">
-                <canvas id="iqChart" class="chart-canvas js-update-chart-line" data-chart-hide-axes="false"
-                  data-chart-points="true" data-chart-suffix="pt" data-chart-line-border-color="primary"></canvas>
-              </div>
-            </div>
-          </div>
-
-
-        </div>
-      </div>
     </div>
-  </div>
+    <!-- Page Content -->
+    <div class="container page__container">
+        <div class="page-section" *ngIf="student | async as student">
+            <div class="page-separator">
+                <div class="page-separator__text">{{student.displayName}}</div>
+            </div>
 
-  <!-- // END Page Content -->
+
+            <div class="page-section" *ngFor="let lesson of student.lessons; index as i">
+                <div class="page-separator">
+                    <div class="page-separator__text">{{ (lesson.id |lessonObject|async) }}</div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="card border-1 border-bottom-3 border-bottom-accent text-center mb-lg-0">
+                            <div class="card-body">
+                                <h4 class="h2 mb-0">{{getTimeProm(lesson.attempts)}}</h4>
+                                <div>Tiempo promedio</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="card text-center border-bottom-3 border-bottom-accent mb-lg-0">
+                            <div class="card-body">
+                                <h4 class="h2 mb-0">{{getNotaMx(lesson.attempts)}}</h4>
+                                <div>Nota maxima</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="card text-center border-bottom-3 border-bottom-accent  mb-lg-0">
+                            <div class="card-body">
+                                <h4 class="h2 mb-0">{{lesson.attempts.length}}</h4>
+                                <div>Numero de intentos</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="container page-section">
+                </div>
+                <div class="myChart">
+                    <canvas #test id="canvas"></canvas> |
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- // END Page Content -->
 
 </div>
 
