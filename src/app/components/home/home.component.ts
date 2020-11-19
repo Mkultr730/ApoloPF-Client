@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { Course } from 'src/app/models/course.model';
 import { Leccion } from 'src/app/models/leccion';
-import { User } from 'src/app/models/user.model';
+import { AuthService } from 'src/app/services/auth.service';
 import { LessonsService } from 'src/app/services/lessons/lessons.service';
 
 @Component({
@@ -15,9 +15,15 @@ export class HomeComponent implements OnInit {
 
   lessons: Observable<Array<Leccion>>;
 
-  constructor(private lessonsService: LessonsService) { }
+  constructor(private lessonsService: LessonsService, private authService: AuthService) { }
 
   ngOnInit(): void {
-    this.lessons = this.lessonsService.getAll();
+    this.authService.user$.subscribe(user => {
+      user.Course?.get().then(course => {
+        const courseData = course.data() as Course;
+        this.lessons = this.lessonsService.getAll()
+        .pipe(map(lessons => lessons.filter(lesson => +lesson.year === courseData.grado)));
+      });
+    });
   }
 }

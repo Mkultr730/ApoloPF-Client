@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Question } from '../models/question.model';
 import { User } from '../models/user.model';
@@ -10,19 +11,22 @@ import { User } from '../models/user.model';
 export class ForumsService {
 
   constructor(
-    private afs: AngularFirestore
+    private afs: AngularFirestore,
+    private router: Router
   ) { }
 
   getUserInfo(uid: string) {
     return this.afs.doc<User>(`users/${uid}`).valueChanges();
   }
 
-  newQuestion(question: string, uid: string, year: number, schoolYYYY: number, details: string) {
-    return this.afs.collection(`forums/${year}/${schoolYYYY}/`).add({
+  newQuestion(question: string, uid: string, year: number, grade: number, details: string) {
+    return this.afs.collection(`forums/${year}/${grade}/`).add({
       answers: [],
       details: details,
       madeby: this.afs.doc(`users/${uid}`).ref,
       question: question,
+    }).then(ref => {
+      this.router.navigate([`/forum/${year}/${grade}/${ref.id}`]);
     });
   }
 

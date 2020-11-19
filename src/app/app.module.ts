@@ -45,6 +45,8 @@ import { DiscussionComponent } from './components/discussion/discussion.componen
 import { DiscussionAskComponent } from './components/discussion-ask/discussion-ask.component';
 import { UserTypePipe } from './pipes/forum/user-type.pipe';
 import { SeccionPipe } from './pipes/exercises/seccion.pipe';
+import { SortCoursesPipe } from './pipes/admin/sort-courses.pipe';
+import { TeacherNamePipe } from './pipes/admin/teacher-name.pipe';
 import { LessonObjectPipe } from './pipes/studentreport/lesson-object.pipe';
 import { StudentsPipe } from './pipes/lesson/students.pipe';
 import { IdStudentPipe } from './pipes/teacher/id-student.pipe';
@@ -76,9 +78,10 @@ import { IdStudentPipe } from './pipes/teacher/id-student.pipe';
     DiscussionAskComponent,
     UserTypePipe,
     SeccionPipe,
-    LessonObjectPipe,
     StudentsPipe,
-    IdStudentPipe
+    IdStudentPipe,
+    SortCoursesPipe,
+    TeacherNamePipe,
   ],
   imports: [
     BrowserModule,

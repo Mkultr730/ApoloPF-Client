@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore, DocumentReference } from '@angular/fire/firestore';
+import { Observable, concat } from 'rxjs';
 import { Course } from '../models/course.model';
 import { User } from '../models/user.model';
 
@@ -9,6 +10,20 @@ import { User } from '../models/user.model';
 export class CourseService {
 
   constructor(private afs: AngularFirestore) { }
+
+  listCourses(year: number) {
+    let allcourses: Observable<Array<Course>> = null;
+    const grades: string[] = ['4', '5'];
+    for (const grade of grades) {
+      const courseRef = this.afs.collection<Course>(`courses/${year}/${grade}`);
+      if (allcourses) {
+        allcourses = concat(allcourses, courseRef.valueChanges());
+      } else {
+        allcourses = courseRef.valueChanges();
+      }
+    }
+    return allcourses;
+  }
 
   createCourse(courseName: string, schoolYYYY: number) {
     return new Promise<any>((resolve, reject) => {
