@@ -82,6 +82,7 @@ import { IdStudentPipe } from './pipes/teacher/id-student.pipe';
     IdStudentPipe,
     SortCoursesPipe,
     TeacherNamePipe,
+    LessonObjectPipe
   ],
   imports: [
     BrowserModule,
