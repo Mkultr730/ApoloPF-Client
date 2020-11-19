@@ -46,6 +46,8 @@ import { DiscussionAskComponent } from './components/discussion-ask/discussion-a
 import { UserTypePipe } from './pipes/forum/user-type.pipe';
 import { SeccionPipe } from './pipes/exercises/seccion.pipe';
 import { LessonObjectPipe } from './pipes/studentreport/lesson-object.pipe';
+import { StudentsPipe } from './pipes/lesson/students.pipe';
+import { IdStudentPipe } from './pipes/teacher/id-student.pipe';
 
 @NgModule({
   declarations: [
@@ -74,7 +76,9 @@ import { LessonObjectPipe } from './pipes/studentreport/lesson-object.pipe';
     DiscussionAskComponent,
     UserTypePipe,
     SeccionPipe,
-    LessonObjectPipe
+    LessonObjectPipe,
+    StudentsPipe,
+    IdStudentPipe
   ],
   imports: [
     BrowserModule,

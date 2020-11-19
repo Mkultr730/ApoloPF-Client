@@ -30,7 +30,7 @@ export class StudentReportComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
     let htmlRef = this.elementRef.nativeElement.querySelector(`#canvas`);
-    var chart = new Chart(htmlRef, {
+    /*var chart = new Chart(htmlRef, {
       type: 'bar',
       data: {
         labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
@@ -65,7 +65,7 @@ export class StudentReportComponent implements OnInit, AfterViewInit {
           }]
         }
       }
-    });
+    });*/
   }
 
   ngAfterViewInit() {
