@@ -1,6 +1,6 @@
 <div class="container custom-container">
   <div class="row">
-    <div class="col-8 lessons-container">
+    <div class="col-12 lessons-container">
       <!-- List of Lessons to Display - fix!: Component Needed -->
 
       <div *ngFor="let lesson of lessons | async; index as i" class="lesson-container">
@@ -19,8 +19,7 @@
                 <div class="media-body">
                   <div class="card-title mb-0">{{lesson.titulo}}</div>
                   <p class="lh-1 mb-0">
-                    <span class="text-50 small">{{lesson.year}}° </span>
-                    <span class="text-50 small font-weight-bold">grado</span>
+                    <span class="text-50 small font-weight-bold">{{lesson.year}}° grado</span>
                   </p>
                 </div>
               </div>
@@ -44,6 +43,6 @@
         </div>
       </div>
     </div>
-    <app-right-info class="col-4"></app-right-info>
+    <!-- <app-right-info class="col-4"></app-right-info> -->
   </div>
 </div>
