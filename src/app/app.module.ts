@@ -48,6 +48,8 @@ import { SeccionPipe } from './pipes/exercises/seccion.pipe';
 import { SortCoursesPipe } from './pipes/admin/sort-courses.pipe';
 import { TeacherNamePipe } from './pipes/admin/teacher-name.pipe';
 import { LessonObjectPipe } from './pipes/studentreport/lesson-object.pipe';
+import { StudentsPipe } from './pipes/lesson/students.pipe';
+import { IdStudentPipe } from './pipes/teacher/id-student.pipe';
 
 @NgModule({
   declarations: [
@@ -76,9 +78,10 @@ import { LessonObjectPipe } from './pipes/studentreport/lesson-object.pipe';
     DiscussionAskComponent,
     UserTypePipe,
     SeccionPipe,
+    StudentsPipe,
+    IdStudentPipe,
     SortCoursesPipe,
     TeacherNamePipe,
-    LessonObjectPipe
   ],
   imports: [
     BrowserModule,
