@@ -77,7 +77,7 @@ export class StudentReportComponent implements OnInit, AfterContentInit {
 
   ngAfterContentInit() {
     setTimeout(() => {
-      console.log(this.canvasRef.nativeElement)
+      console.log(this.canvasRef.nativeElement);
       this.ctx = this.canvasRef.nativeElement.getContext('2d');
       var chart = new Chart(this.ctx, {
         type: 'bar',
