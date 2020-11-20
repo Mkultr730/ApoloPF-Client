@@ -15,7 +15,7 @@ import { ElementRef } from '@angular/core';
 })
 export class StudentReportComponent implements OnInit, AfterContentInit {
 
-  @ViewChild('test') canvasRef: ElementRef;
+  @ViewChild('canvas') canvasRef: ElementRef;
 
   cid: string;
   eid: string;
@@ -76,11 +76,12 @@ export class StudentReportComponent implements OnInit, AfterContentInit {
   }
 
   ngAfterContentInit() {
-    setTimeout(() => {
+    setTimeout(async () => {
       console.log(this.canvasRef.nativeElement);
       this.ctx = this.canvasRef.nativeElement.getContext('2d');
+      const student = await this.student.toPromise() as User;
       var chart = new Chart(this.ctx, {
-        type: 'bar',
+        type: 'line',
         data: {
           labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
           datasets: [{

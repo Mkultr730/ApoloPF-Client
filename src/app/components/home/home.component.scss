@@ -40,11 +40,11 @@
   margin: auto;
   height: 85%;
   padding: 15%;
-  opacity: 0.4;
 }
 
 .lesson-container {
   display: flex;
+  flex-direction: row;
   align-items: center;
   position: relative;
 }

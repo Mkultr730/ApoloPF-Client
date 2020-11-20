@@ -1,1 +1,45 @@
-<router-outlet></router-outlet>
+<!-- Header -->
+
+<div id="header" class="mdk-header js-mdk-header mb-0" data-fixed data-effects="waterfall">
+    <div class="mdk-header__content">
+
+        <div class="navbar navbar-expand navbar-light bg-white navbar-shadow" id="default-navbar" data-primary>
+            <div class="container page__container">
+
+                <!-- Navbar Brand -->
+                <a href="index.html" class="navbar-brand mr-16pt">
+
+                    <span class="avatar avatar-sm navbar-brand-icon mr-0 mr-lg-8pt">
+
+                        <span class="avatar-title rounded bg-primary"><img src="assets/icons/logo_Apolo-light.svg"
+                                alt="logo" class="img-fluid" /></span>
+
+                    </span>
+
+                    <span class="d-none d-lg-block">Apolo</span>
+                </a>
+
+                <ul class="nav navbar-nav d-none d-sm-flex flex justify-content-start ml-8pt">
+                    <li routerLinkActive="active" class="nav-item" [routerLinkActiveOptions]="{exact: true}">
+                        <a [routerLink]="['/']" class="nav-link">Inicio</a>
+                    </li>
+                    <li routerLinkActive="active" class="nav-item" [routerLinkActiveOptions]="{exact: true}">
+                        <a [routerLink]="['/forum']" class="nav-link">Foro</a>
+                    </li>
+                    <li routerLinkActive="active" class="nav-item" [routerLinkActiveOptions]="{exact: true}">
+                        <a [routerLink]="['/profesor']" class="nav-link">Profesor</a>
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- // END Header -->
+
+<!-- Header Layout Content -->
+<div class="mdk-header-layout__content page-content ">
+    <router-outlet></router-outlet>
+</div>

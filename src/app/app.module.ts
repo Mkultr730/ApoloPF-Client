@@ -50,6 +50,7 @@ import { TeacherNamePipe } from './pipes/admin/teacher-name.pipe';
 import { LessonObjectPipe } from './pipes/studentreport/lesson-object.pipe';
 import { StudentsPipe } from './pipes/lesson/students.pipe';
 import { IdStudentPipe } from './pipes/teacher/id-student.pipe';
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 
 @NgModule({
   declarations: [
@@ -102,7 +103,8 @@ import { IdStudentPipe } from './pipes/teacher/id-student.pipe';
     MatGridListModule,
     MatCardModule,
     MatMenuModule,
-    FormsModule
+    FormsModule,
+    SweetAlert2Module.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent]

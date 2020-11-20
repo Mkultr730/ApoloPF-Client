@@ -8,6 +8,7 @@ import { take } from 'rxjs/operators';
 import { Ejercicio, Leccion } from 'src/app/models/leccion';
 import { AuthService } from 'src/app/services/auth.service';
 import { LessonsService } from 'src/app/services/lessons/lessons.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-exercises',
@@ -19,6 +20,7 @@ export class ExercisesComponent implements OnInit {
   lessonId: string;
   lesson: Observable<Leccion>;
   form: FormGroup;
+  score: number;
 
   public timeBegan = null;
   public timeStopped: any = null;
@@ -86,6 +88,7 @@ export class ExercisesComponent implements OnInit {
       this.currentQuestion++;
       this.scrollToTop();
     } else {
+      this.currentQuestion++;
       this.sendQuiz();
     }
   }
@@ -182,9 +185,22 @@ export class ExercisesComponent implements OnInit {
           lessons = [currentLesson];
         }
       }
-      this.firestore.doc(`/users/${this.authService.uid}`).update({ lessons });
-      this.router.navigate(['/']);
+      this.score = score / questionCount;
+      this.firestore.doc(`/users/${this.authService.uid}`).update({ lessons })
+      .then(lesson => {
+        Swal.fire({
+          icon: 'success',
+          title: 'Tu prueba ha sido enviada satisfactoriamente',
+          showConfirmButton: true,
+        }).then(swal => {
+          this.router.navigate(['/']);
+        });
+      });
     });
+  }
+
+  formatedScore() {
+    return new Intl.NumberFormat('es-CO').format(this.score * 100);
   }
 
 }

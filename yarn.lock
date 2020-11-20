@@ -1670,6 +1670,13 @@
     semver "7.3.2"
     semver-intersect "1.4.0"
 
+"@sweetalert2/ngx-sweetalert2@^8.1.1":
+  version "8.1.1"
+  resolved "https://registry.yarnpkg.com/@sweetalert2/ngx-sweetalert2/-/ngx-sweetalert2-8.1.1.tgz#3f4a488dec9e1dae754f2e8a6d61b2306d486b17"
+  integrity sha512-yWBgzWN0uCcmc4lU/HQ+gH5pak1NC6y373nDSHyxnMCXN/+nEz4PB16ulRGProR7SJPw0naEX3jnHnyfbEetcg==
+  dependencies:
+    tslib "^1.10.0"
+
 "@types/color-name@^1.1.1":
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/@types/color-name/-/color-name-1.1.1.tgz#1c1261bbeaa10a8055bbc5d8ab84b7b2afc846a0"
@@ -8893,6 +8900,11 @@ svgo@^1.0.0:
     stable "^0.1.8"
     unquote "~1.1.1"
     util.promisify "~1.0.0"
+
+sweetalert2@^10.10.1:
+  version "10.10.1"
+  resolved "https://registry.yarnpkg.com/sweetalert2/-/sweetalert2-10.10.1.tgz#47c46929eff4837c8296836aa169073bae418031"
+  integrity sha512-lUdjFEE3ZKJ9OIhIZ1v3yAMwC5gGsBz5N/+FvTVY0Ttw+ZVcoIIPX2K4V+p+PKnFChm0Pan1j8xwYLgcvt0O7g==
 
 symbol-observable@2.0.3:
   version "2.0.3"

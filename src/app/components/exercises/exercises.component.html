@@ -80,7 +80,7 @@
         </div>
       </div>
     </div>
-    <div [formGroupName]="i"  class="container page__container">
+    <div [formGroupName]="i" class="container page__container">
       <ng-container formArrayName="questions">
         <div *ngFor="let pregunta of getPreguntas(seccion).controls; let m = index" class="page-section">
           <div class="page-separator">
@@ -89,8 +89,9 @@
           <ng-container [formGroupName]="m">
             <div *ngFor="let opcion of pregunta.get('opciones').value; let n = index" class="form-group">
               <div class="custom-control custom-radio">
-                <input formControlName="chosen" id="opcion{{n}}pregunta{{m}}seccion{{i}}" type="radio" class="custom-control-input" [value]="opcion">
-                <label for="opcion{{n}}pregunta{{m}}seccion{{i}}" class="custom-control-label" >{{opcion}}</label>
+                <input formControlName="chosen" id="opcion{{n}}pregunta{{m}}seccion{{i}}" type="radio"
+                  class="custom-control-input" [value]="opcion">
+                <label for="opcion{{n}}pregunta{{m}}seccion{{i}}" class="custom-control-label">{{opcion}}</label>
               </div>
             </div>
           </ng-container>
@@ -99,5 +100,6 @@
     </div>
   </ng-container>
 </form>
+
 
 <!-- <pre>{{ form.getRawValue() | json }}</pre> -->
