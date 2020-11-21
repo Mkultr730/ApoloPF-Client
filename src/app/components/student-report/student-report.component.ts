@@ -3,7 +3,7 @@ import { ForumsService } from './../../services/forums.service';
 import { AfterContentInit, Component, OnInit, QueryList, ViewChild, ViewChildren } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { User } from 'src/app/models/user.model';
-import { Attempt } from 'src/app/models/attempts';
+import { Attempt, LessonAttempt } from 'src/app/models/attempts';
 import { Chart } from 'node_modules/chart.js';
 import { ElementRef } from '@angular/core';
 
@@ -19,7 +19,10 @@ export class StudentReportComponent implements OnInit, AfterContentInit {
   cid: string;
   eid: string;
   student: Observable<User>;
+  attemps_Data: Array<LessonAttempt>;
   ctx;
+  data: Array<number> = [];
+
 
   constructor(
     private route: ActivatedRoute,
@@ -30,6 +33,10 @@ export class StudentReportComponent implements OnInit, AfterContentInit {
     this.eid = this.route.snapshot.paramMap.get('eid');
     this.cid = this.route.snapshot.paramMap.get('cid');
     this.student = this.forumsService.getUserInfo(this.eid);
+    this.student.subscribe(user => {
+      this.attemps_Data = user.lessons;
+      console.log(user)
+    })
   }
 
 
@@ -37,15 +44,21 @@ export class StudentReportComponent implements OnInit, AfterContentInit {
     setTimeout(() => {
       // console.log(this.canvasRef.nativeElement);
       this.canvasRef.forEach((item, index) => {
-
+        let lesson = this.attemps_Data[index].attempts;
+        console.log(lesson, 'xLección')
+        let i: Array<string> = [];
+        lesson.forEach((item, index) => {
+          this.data.push(item.score*100);
+          i.push((index+1)+"");
+        })
         let ctx = item.nativeElement.getContext('2d');
         var chart = new Chart(ctx, {
           type: 'line',
           data: {
-            labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+            labels: i,
             datasets: [{
-              label: 'Número de intentos',
-              data: [12, 19, 3, 5, 2, 3],
+              label: 'Puntaje',
+              data: this.data,
               backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
                 'rgba(54, 162, 235, 0.2)',
@@ -75,6 +88,7 @@ export class StudentReportComponent implements OnInit, AfterContentInit {
             }
           }
         });
+        this.data = []
       });
     }, 2000);
   }
