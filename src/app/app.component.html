@@ -1,6 +1,6 @@
 <!-- Header -->
 
-<div id="header" class="mdk-header js-mdk-header mb-0" data-fixed data-effects="waterfall">
+<div *ngIf="user" id="header" class="mdk-header js-mdk-header mb-0" data-fixed data-effects="waterfall">
     <div class="mdk-header__content">
 
         <div class="navbar navbar-expand navbar-light bg-white navbar-shadow" id="default-navbar" data-primary>
@@ -30,6 +30,12 @@
                         <a [routerLink]="['/profesor']" class="nav-link">Profesor</a>
                     </li>
                 </ul>
+
+                <div class="row" role="tablist">
+                    <div class="col-auto">
+                        <a (click)="logout()" class="btn btn-outline-secondary">Cerrar Sesión</a>
+                    </div>
+                </div>
 
             </div>
         </div>

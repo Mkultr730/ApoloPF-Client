@@ -30,8 +30,8 @@ export class LoginComponent implements OnInit, OnDestroy {
         if (this.user) { this.router.navigate(['/']); }
       });
 
-    (document.querySelector('.mdk-drawer.js-mdk-drawer.layout-mini__drawer') as HTMLDivElement).style.display = 'none';
-    (document.querySelector('.navbar.navbar-expand.navbar-light.border-bottom-2') as HTMLDivElement).style.display = 'none';
+    // (document.querySelector('.mdk-drawer.js-mdk-drawer.layout-mini__drawer') as HTMLDivElement).style.display = 'none';
+    // (document.querySelector('.navbar.navbar-expand.navbar-light.border-bottom-2') as HTMLDivElement).style.display = 'none';
   }
 
   async googleSignin() {
