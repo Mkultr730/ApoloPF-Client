@@ -6,16 +6,16 @@
                 <div class="mb-24pt mb-sm-0 mr-sm-24pt">
                     <h2 class="mb-0">Dashboard</h2>
                     <ol class="breadcrumb p-0 m-0">
-                        <li class="breadcrumb-item"><a href="/profesor">Home</a></li>
-                        <li class="breadcrumb-item"><a href="/profesor">Dashboard</a></li>
-                        <li class="breadcrumb-item"><a href="/profesor/{{cid}}">Curso</a></li>
+                        <li class="breadcrumb-item"><a routerLink="/">Home</a></li>
+                        <li class="breadcrumb-item"><a routerLink="/profesor">Dashboard</a></li>
+                        <li class="breadcrumb-item"><a routerLink="/profesor/{{cid}}">Curso</a></li>
                         <li class="breadcrumb-item active">Estudiante</li>
                     </ol>
                 </div>
             </div>
             <div class="row" role="tablist">
                 <div class="col-auto">
-                    <a href="/profesor/{{cid}}" class="btn btn-outline-secondary">Volver</a>
+                    <a routerLink="/profesor/{{cid}}" class="btn btn-outline-secondary">Volver</a>
                 </div>
             </div>
         </div>
@@ -59,9 +59,9 @@
                     </div>
                 </div>
                 <div class="container page-section">
-                  <div class="myChart">
-                    <canvas #canvas id="canvas"></canvas> |
-                  </div>
+                    <div class="myChart">
+                        <canvas #canvas id="canvas"></canvas>
+                    </div>
                 </div>
             </div>
         </div>

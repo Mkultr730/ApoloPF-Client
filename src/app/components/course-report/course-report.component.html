@@ -6,7 +6,7 @@
                 <div class="mb-24pt mb-sm-0 mr-sm-24pt">
                     <h2 class="mb-0">Dashboard</h2>
                     <ol class="breadcrumb p-0 m-0">
-                        <li class="breadcrumb-item"><a href="/profesor">Home</a></li>
+                        <li class="breadcrumb-item"><a routerLink="/profesor">Home</a></li>
                         <li class="breadcrumb-item active">Dashboard</li>
                     </ol>
                 </div>
@@ -14,7 +14,7 @@
 
             <div class="row" role="tablist">
                 <div class="col-auto">
-                    <a href="/profesor" class="btn btn-outline-secondary">Mis cursos</a>
+                    <a routerLink="/profesor" class="btn btn-outline-secondary">Mis cursos</a>
                 </div>
             </div>
         </div>
@@ -36,7 +36,7 @@
                                 <p class="card-subtitle text-50">Best score</p>
                             </div>
                             <div class="dropdown">
-                                <a href="#" class="btn btn-sm btn-outline-secondary dropdown-toggle" data-toggle="dropdown">Popular
+                                <a routerLink="#" class="btn btn-sm btn-outline-secondary dropdown-toggle" data-toggle="dropdown">Popular
                   Topics</a>
                                 <div class="dropdown-menu dropdown-menu-right">
                                     <a href="" class="dropdown-item">Popular Topics</a>
@@ -78,23 +78,23 @@
             <div class="card" *ngIf="user | async as user">
                 <div class="list-group list-group-flush">
                     <div class="list-group-item p-3" *ngFor="let clase of user.courses; index as i">
-                      <div *ngIf="(clase | students|async) as learners">
-                        <div  class="row align-items-start">
-                            <div  *ngFor="let learner of learners; index as i;" class="col-md-3 mb-8pt mb-md-0">
-                                <div *ngIf="learner| userName|async as learnername"class="media align-items-center">
-                                    <div  class="media-left mr-12pt" >
-                                        <a href="" class="avatar avatar-sm">
-                                            <!-- <img src="../../LB" alt="avatar" class="avatar-img rounded-circle"> -->
-                                            <span class="avatar-title rounded-circle">{{learnername[0]}}</span>
-                                        </a>
-                                    </div>
-                                    <div *ngIf="learner| idStudent|async as learnerid"  class="d-flex flex-column media-body media-middle">
-                                        <a href="/profesor/{{cid}}/{{learnerid}}" class="card-title">{{learnername}}</a>
+                        <div *ngIf="(clase | students|async) as learners">
+                            <div class="row align-items-start">
+                                <div *ngFor="let learner of learners; index as i;" class="col-md-3 mb-8pt mb-md-0">
+                                    <div *ngIf="learner| userName|async as learnername" class="media align-items-center">
+                                        <div class="media-left mr-12pt" *ngIf="learner| idStudent|async as learnerid">
+                                            <a routerLink="{{learnerid}}" class="avatar avatar-sm">
+                                                <!-- <img src="../../LB" alt="avatar" class="avatar-img rounded-circle"> -->
+                                                <span class="avatar-title rounded-circle">{{learnername[0]}}</span>
+                                            </a>
+                                        </div>
+                                        <div *ngIf="learner| idStudent|async as learnerid" class="d-flex flex-column media-body media-middle">
+                                            <a routerLink="{{learnerid}}" class="card-title">{{learnername}}</a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                      </div>
                     </div>
                 </div>
 
@@ -152,7 +152,7 @@
                             <div class="col mb-8pt mb-md-0">
                                 <p class="mb-8pt"><a routerLink="/forum/2020/4/{{question.id}}" class="text-body"><strong>{{ question.question }}</strong></a></p>
 
-                                <a href="discussion.html" class="chip chip-outline-secondary">Angular fundamentals</a>
+                                <!-- <a href="discussion.html" class="chip chip-outline-secondary">Angular fundamentals</a> -->
 
                             </div>
                             <div class="col-auto d-flex flex-column align-items-center justify-content-center">

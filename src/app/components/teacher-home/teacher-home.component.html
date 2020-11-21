@@ -1,27 +1,23 @@
 <div class="page-section">
-  <div *ngIf="user | async as user" class="container page__container">
-    <div class="page-separator">
-      <div class="page-separator__text">Mis Cursos</div>
-    </div>
-    <div class="row card-group-row">
-      <div class="col-md-6 col-lg-4 col-xl-3 card-group-row__col" *ngFor="let clase of user.courses; index as i">
-        <div *ngIf="(clase | clase | async) as class"
-          class="card card-sm card--elevated p-relative o-hidden overlay overlay--primary-dodger-blue js-overlay card-group-row__card"
-          data-trigger="click">
-          <a href="profesor/{{clase | idClase}}" class="js-image" data-position="center" data-height="auto"
-            data-domfactory-upgraded="image"
-            style="display: block; position: relative; overflow: hidden; background-image: url(&quot;../../assets/images/640x426class.jpg&quot;); background-size: cover; background-position: center center; height: 168px;">
-          </a>
-          <div class="card-body flex">
-            <div class="d-flex">
-              <div class="flex">
-                <a class="card-title" href="profesor/{{(clase | idClase)}}">{{ class.coursename }}</a>
-                <small class="text-50 font-weight-bold mb-4pt"> {{ user.displayName }}</small>
-              </div>
-            </div>
-          </div>
+    <div *ngIf="user | async as user" class="container page__container">
+        <div class="page-separator">
+            <div class="page-separator__text">Mis Cursos</div>
         </div>
-      </div>
+        <div class="row card-group-row">
+            <div class="col-md-6 col-lg-4 col-xl-3 card-group-row__col" *ngFor="let clase of user.courses; index as i">
+                <div *ngIf="(clase | clase | async) as class" class="card card-sm card--elevated p-relative o-hidden overlay overlay--primary-dodger-blue js-overlay card-group-row__card" data-trigger="click">
+                    <a routerLink="{{clase | idClase}}" class="js-image" data-position="center" data-height="auto" data-domfactory-upgraded="image" style="display: block; position: relative; overflow: hidden; background-image: url(&quot;../../assets/images/640x426class.jpg&quot;); background-size: cover; background-position: center center; height: 168px;">
+                    </a>
+                    <div class="card-body flex">
+                        <div class="d-flex">
+                            <div class="flex">
+                                <a class="card-title" routerLink="{{(clase | idClase)}}">{{ class.coursename }}</a>
+                                <small class="text-50 font-weight-bold mb-4pt"> {{ user.displayName }}</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
 </div>
