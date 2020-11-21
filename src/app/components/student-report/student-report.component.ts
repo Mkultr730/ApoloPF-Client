@@ -20,8 +20,6 @@ export class StudentReportComponent implements OnInit, AfterContentInit {
   eid: string;
   student: Observable<User>;
   attemps_Data: Array<LessonAttempt>;
-  ctx;
-  data: Array<number> = [];
 
 
   constructor(
@@ -35,20 +33,19 @@ export class StudentReportComponent implements OnInit, AfterContentInit {
     this.student = this.forumsService.getUserInfo(this.eid);
     this.student.subscribe(user => {
       this.attemps_Data = user.lessons;
-      console.log(user)
     })
   }
 
 
   ngAfterContentInit() {
     setTimeout(() => {
-      // console.log(this.canvasRef.nativeElement);
+
       this.canvasRef.forEach((item, index) => {
         let lesson = this.attemps_Data[index].attempts;
-        console.log(lesson, 'xLección')
         let i: Array<string> = [];
+        let data: Array<number> = [];
         lesson.forEach((item, index) => {
-          this.data.push(item.score*100);
+          data.push(item.score*100);
           i.push((index+1)+"");
         })
         let ctx = item.nativeElement.getContext('2d');
@@ -58,7 +55,7 @@ export class StudentReportComponent implements OnInit, AfterContentInit {
             labels: i,
             datasets: [{
               label: 'Puntaje',
-              data: this.data,
+              data: data,
               backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
                 'rgba(54, 162, 235, 0.2)',
@@ -88,9 +85,8 @@ export class StudentReportComponent implements OnInit, AfterContentInit {
             }
           }
         });
-        this.data = []
       });
-    }, 2000);
+    }, 1000);
   }
 
   getNotaMx(intentos: Array<Attempt>): number {
