@@ -1,8 +1,10 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { AngularFireAuth } from '@angular/fire/auth';
 import { AuthService } from '../../services/auth.service';
-import { FormControl, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators,  } from '@angular/forms';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
+
+declare var $: any;
 
 @Component({
   selector: 'app-login',
@@ -17,10 +19,12 @@ export class LoginComponent implements OnInit, OnDestroy {
   hide = true;
   casa = '';
 
+  registerForm: FormGroup;
+  submitted = false;
+
   constructor(
     private service: AuthService,
-    private afAuth: AngularFireAuth,
-    private router: Router
+    private router: Router,
   ) { }
 
   ngOnInit(): void {
@@ -30,8 +34,6 @@ export class LoginComponent implements OnInit, OnDestroy {
         if (this.user) { this.router.navigate(['/']); }
       });
 
-    // (document.querySelector('.mdk-drawer.js-mdk-drawer.layout-mini__drawer') as HTMLDivElement).style.display = 'none';
-    // (document.querySelector('.navbar.navbar-expand.navbar-light.border-bottom-2') as HTMLDivElement).style.display = 'none';
   }
 
   async googleSignin() {
@@ -52,11 +54,82 @@ export class LoginComponent implements OnInit, OnDestroy {
     if (this.user) { this.router.navigate(['/']); }
   }
 
-  getErrorMessage() {
-    if (this.email.hasError('required')) {
-      return 'You must enter a value';
+  async showModal() {
+    const { value: formValues } = await Swal.fire({
+      title: 'Registrar',
+      html: `
+              <div class="row">
+                  <div class="col-sm-12">
+                      <div class="form-group">
+                          <label>Nombre</label>
+                          <input type="text" id="firstname" formControlName="firstname" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.firstname.errors }" />
+                          <div *ngIf="submitted && f.firstname.errors" class="invalid-feedback">
+                              <div *ngIf="f.firstname.errors.required">FirstName is required</div>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="col-sm-6">
+                      <div class="form-group">
+                          <label>Correo</label>
+                          <input type="text" id="email" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
+                          <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                              <div *ngIf="f.email.errors.required">Email is required</div>
+                              <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="col-sm-6">
+                      <div class="form-group">
+                          <label>celular</label>
+                          <input type="text" id="mobile" formControlName="mobile" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.mobile.errors }" />
+                          <div *ngIf="submitted && f.mobile.errors" class="invalid-feedback">
+                              <div *ngIf="f.mobile.errors">Mobile must be Valid and at least 10 digits</div>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="col-sm-6">
+                      <div class="form-group">
+                          <label>Contraseña</label>
+                          <input type="password" id="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+                          <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                              <div *ngIf="f.password.errors.required">Password is required</div>
+                              <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="col-sm-6">
+                      <div class="form-group">
+                          <label>Código de Curso</label>
+                          <input type="text" id="courseId" formControlName="courseId" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+                          <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                              <div *ngIf="f.password.errors.required">Password is required</div>
+                              <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <div class="form-check">
+              <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                <label class="form-check-label" for="exampleCheck1">Acepto los <a href="terminos-condiciones" target="_blank">terminos y condiciones</a></label>
+              </div>
+      `,
+      focusConfirm: false,
+      inputPlaceholder: 'I agree with the terms and conditions',
+      preConfirm: () => {
+        return {
+          name: (document.getElementById('firstname') as HTMLInputElement).value,
+          email: (document.getElementById('email') as HTMLInputElement).value,
+          phone: (document.getElementById('mobile') as HTMLInputElement).value,
+          password: (document.getElementById('password') as HTMLInputElement).value,
+          courseId: (document.getElementById('courseId') as HTMLInputElement).value,
+        }
+      }
+    })
+
+    if (formValues) {
+      Swal.fire(JSON.stringify(formValues))
+      console.log(formValues);
     }
-    return this.email.hasError('email') ? 'Not a valid email' : '';
   }
 
   ngOnDestroy() {

@@ -12,6 +12,7 @@ import { LoginComponent } from './components/login/login.component';
 import { TeacherHomeComponent } from './components/teacher-home/teacher-home.component';
 import { AdminGuard } from './guards/admin/admin.guard';
 import { AuthGuard } from './guards/auth.guard';
+import { TermsConditionsComponent } from './components/terms-conditions/terms-conditions.component';
 
 
 const routes: Routes = [
@@ -26,6 +27,7 @@ const routes: Routes = [
   { path: 'forum', component: ForumComponent, canActivate: [AuthGuard] },
   { path: 'forum/:year/:grade/:id', component: DiscussionComponent, canActivate: [AuthGuard] },
   { path: 'ask-question', component: DiscussionAskComponent, canActivate: [AuthGuard] },
+  { path: 'terminos-condiciones', component: TermsConditionsComponent },
   { path: '**', redirectTo: '' },
 ];
 

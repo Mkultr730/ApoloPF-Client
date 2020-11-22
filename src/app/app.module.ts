@@ -51,6 +51,7 @@ import { LessonObjectPipe } from './pipes/studentreport/lesson-object.pipe';
 import { StudentsPipe } from './pipes/lesson/students.pipe';
 import { IdStudentPipe } from './pipes/teacher/id-student.pipe';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
+import { TermsConditionsComponent } from './components/terms-conditions/terms-conditions.component';
 
 @NgModule({
   declarations: [
@@ -83,7 +84,8 @@ import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
     IdStudentPipe,
     SortCoursesPipe,
     TeacherNamePipe,
-    LessonObjectPipe
+    LessonObjectPipe,
+    TermsConditionsComponent
   ],
   imports: [
     BrowserModule,

@@ -9,57 +9,27 @@
                     </div>
                 </div>
                 <div class="card-body" style="display: flex; flex-direction: column;">
-
                     <div class="form-group">
                         <label for="InputEmail">Correo Electrónico</label>
                         <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" [formControl]="email" required/>
                         <small id="emailHelp" class="form-text text-muted">Su información nunca será compartida con más nadie.</small>
                     </div>
-
-                    <!-- <mat-form-field>
-                        <mat-label>Correo Electrónico</mat-label>
-                        <input matInput placeholder="pat@ejemplo.com" [formControl]="email" required />
-                        <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
-                    </mat-form-field> -->
-
                     <div class="form-group">
                         <label for="InputPassword">Contraseña</label>
                         <input type="password" class="form-control" [type]="hide ? 'password' : 'text'" [(ngModel)]="password" />
-                        <!-- <button (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-                          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-                        </button> -->
                         <button (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide" type="button" class="btn btn-default btn-circle">
                           <i class="fas fa-eye"></i>
                         </button>
                     </div>
-
-                    <!-- <mat-form-field>
-                        <mat-label>Contraseña</mat-label>
-                        <input matInput [type]="hide ? 'password' : 'text'" [(ngModel)]="password">
-                        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-                          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-                        </button>
-                    </mat-form-field> -->
-
-                    <!-- <button mat-raised-button color="primary" (click)="signin()">
-                      Login
-                    </button> -->
                     <button type="button" class="btn btn-info" (click)="signin()">Login</button>
-                    <!-- <div class="row m-auto">
-            <h4>O entra usando</h4>
-          </div>
-          <div class="row d-flex m-auto">
-            <div class="col">
-              <button class="custom-button" mat-fab (click)="googleSignin()">
-                <mat-icon><img src="assets/icons/google-icon.svg" alt=""></mat-icon>
-              </button>
-            </div>
-            <div class="col">
-              <button class="custom-button" mat-fab (click)="msSignin()">
-                <mat-icon><img src="assets/icons/microsoft-icon.svg" alt=""></mat-icon>
-              </button>
-            </div>
-          </div> -->
+                    <div class="container">
+                        <div class="row" style="width: 100%;">
+                            <div class="col">
+                                O
+                            </div>
+                        </div>
+                    </div>
+                    <button type="button" class="btn btn-info" (click)="showModal()">Registrar</button>
                 </div>
             </div>
         </div>
