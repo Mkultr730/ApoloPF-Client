@@ -94,7 +94,7 @@ export class CourseService {
     await teacherRef.set(teacherInfo);
   }
 
-  async assingStudent(studentid: string, courseid: string, CurrentYYYY: number, schoolYYYY: number) {
+  async assingStudent(studentid: string, courseid: string, CurrentYYYY: number, schoolYYYY: string) {
 
     const courseRef = this.afs.collection(`courses/${CurrentYYYY}/${schoolYYYY}`).doc(courseid);
     const studentRef = this.afs.collection(`users/`).doc(studentid);

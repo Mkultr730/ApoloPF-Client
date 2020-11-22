@@ -11,6 +11,7 @@ import { Observable, of } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 import {User} from '../models/user.model';
 import { Router } from '@angular/router';
+import { CourseService } from './course.service';
 
 @Injectable({
   providedIn: 'root'
@@ -24,6 +25,7 @@ export class AuthService {
       private afAuth: AngularFireAuth,
       private afs: AngularFirestore,
       private router: Router,
+      private courseService: CourseService
   ) {
     this.user$ = this.afAuth.authState.pipe(
       switchMap(user => {
@@ -58,14 +60,14 @@ export class AuthService {
     credential.user['authType'] = 3;
     return this.updateUserData(credential.user);
   }
-  async signup(email:string, pwd:string, photoURL:string, name:string) {
+  async signup(email:string, pwd:string, name:string, courseId:string, grado: string) {
     const credential = await this.afAuth.createUserWithEmailAndPassword(email, pwd);
     await credential.user.updateProfile({
-      displayName: name,
-      photoURL
+      displayName: name
     });
     credential.user['authType'] = 3;
-    return this.updateUserData(credential.user);
+    await this.updateUserData(credential.user);
+    return this.courseService.assingStudent(credential.user.uid,courseId,2020,grado)
   }
   logout() {
     this.afAuth.signOut();

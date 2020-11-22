@@ -80,11 +80,12 @@ export class LoginComponent implements OnInit, OnDestroy {
                   </div>
                   <div class="col-sm-6">
                       <div class="form-group">
-                          <label>celular</label>
-                          <input type="text" id="mobile" formControlName="mobile" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.mobile.errors }" />
-                          <div *ngIf="submitted && f.mobile.errors" class="invalid-feedback">
-                              <div *ngIf="f.mobile.errors">Mobile must be Valid and at least 10 digits</div>
-                          </div>
+                          <label>Año Escolar</label>
+                          <select name="grade" id="grade" style="height:auto; width: 100%;">
+                            <option value="0">Seleccione</option>
+                            <option value="4">Cuarto</option>
+                            <option value="5">Quinto</option>
+                          </select>
                       </div>
                   </div>
                   <div class="col-sm-6">
@@ -119,15 +120,22 @@ export class LoginComponent implements OnInit, OnDestroy {
         return {
           name: (document.getElementById('firstname') as HTMLInputElement).value,
           email: (document.getElementById('email') as HTMLInputElement).value,
-          phone: (document.getElementById('mobile') as HTMLInputElement).value,
           password: (document.getElementById('password') as HTMLInputElement).value,
           courseId: (document.getElementById('courseId') as HTMLInputElement).value,
+          grade: (document.getElementById('grade') as HTMLInputElement).value,
         }
       }
     })
 
     if (formValues) {
-      Swal.fire(JSON.stringify(formValues))
+      Swal.showLoading();
+      this.service.signup(formValues.email, formValues.password, formValues.name, formValues.courseId, formValues.grade)
+      Swal.fire({
+        title: 'Registro',
+        text: 'Registro Completado',
+        icon: 'success',
+        confirmButtonText: 'Aceptar'
+    });
       console.log(formValues);
     }
   }
