@@ -58,7 +58,8 @@ export class ExercisesComponent implements OnInit {
           const sectionForm = this.formBuilder.group({
             order: i,
             enunciado: ejercicioValue.enunciado,
-            questions: questionsFormArray
+            questions: questionsFormArray,
+            audio: ejercicioValue.audio
           });
           ejercicioValue.preguntas.forEach((pregunta, m) => {
             questionsFormArray.push(this.formBuilder.group({
@@ -67,6 +68,8 @@ export class ExercisesComponent implements OnInit {
               pregunta: pregunta.pregunta,
               opciones: [pregunta.respuestas],
               respuesta: pregunta.solucion,
+              audio: pregunta.audio,
+              imagen: pregunta.imagen,
               correct: false
             }));
           });

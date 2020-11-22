@@ -34,6 +34,7 @@
   <ng-container formArrayName="sections">
     <div class="bg-primary pb-lg-64pt pt-8pt">
       <div class="container page__container">
+        <!--
         <div class="js-player bg-primary embed-responsive embed-responsive-16by9 mb-32pt"
           data-domfactory-upgraded="player">
           <div class="player embed-responsive-item">
@@ -50,14 +51,18 @@
             </div>
           </div>
         </div>
-
+-->
         <div class="d-flex flex-wrap align-items-end justify-content-end mb-16pt">
           <h1 class="text-white flex m-0">Sección {{i + 1}} de {{l}}</h1>
           <p class="h1 text-white-50 font-weight-light m-0">{{ time }}</p>
         </div>
 
         <p class="hero__lead measure-hero-lead text-white">{{ seccion.get('enunciado').value }}</p>
-        <button class="btn btn-white">Reproducir Audio</button>
+        <audio controls *ngIf="seccion.get('audio').value | audioUrl|async as audioURL">
+          <source src="{{audioURL}}" type="audio/mp3">
+          Your browser does not support the audio element.
+        </audio>
+
       </div>
     </div>
     <div class="navbar navbar-expand-md navbar-list navbar-light bg-white border-bottom-2 "
@@ -86,6 +91,9 @@
           <div class="page-separator">
             <div class="page-separator__text">{{ pregunta.get('pregunta').value }}</div>
           </div>
+          <div  *ngIf="pregunta.get('imagen').value | imageUrl|async as imageURL">
+            <img src="{{imageURL}}">
+          </div>
           <ng-container [formGroupName]="m">
             <div *ngFor="let opcion of pregunta.get('opciones').value; let n = index" class="form-group">
               <div class="custom-control custom-radio">
@@ -95,6 +103,10 @@
               </div>
             </div>
           </ng-container>
+          <audio controls *ngIf="pregunta.get('audio').value | audioUrl|async as audioURL">
+            <source src="{{audioURL}}" type="audio/mp3">
+            Your browser does not support the audio element.
+          </audio>
         </div>
       </ng-container>
     </div>
