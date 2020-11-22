@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { FormControl, FormGroup, Validators,  } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import Swal from 'sweetalert2';
 
 declare var $: any;
@@ -11,7 +11,7 @@ declare var $: any;
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent implements OnInit, OnDestroy {
+export class LoginComponent implements OnInit {
 
   user: firebase.User;
   email = new FormControl('', [Validators.required, Validators.email]);
@@ -25,13 +25,17 @@ export class LoginComponent implements OnInit, OnDestroy {
   constructor(
     private service: AuthService,
     private router: Router,
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit(): void {
     this.service.getLoggedUser()
       .subscribe(user => {
         this.user = user;
-        if (this.user) { this.router.navigate(['/']); }
+        if (this.user) {
+          console.log('test');
+          this.router.navigateByUrl('/home');
+        }
       });
 
   }
@@ -51,7 +55,10 @@ export class LoginComponent implements OnInit, OnDestroy {
   async signin() {
     console.log('Login...');
     await this.service.signin(this.email.value, this.password);
-    if (this.user) { this.router.navigate(['/']); }
+    if (this.user) {
+      console.log(this.user);
+      this.router.navigate(['/']);
+    }
   }
 
   async showModal() {
@@ -140,9 +147,9 @@ export class LoginComponent implements OnInit, OnDestroy {
     }
   }
 
-  ngOnDestroy() {
-    (document.querySelector('.mdk-drawer.js-mdk-drawer.layout-mini__drawer') as HTMLDivElement).style.display = 'block';
-    (document.querySelector('.navbar.navbar-expand.navbar-light.border-bottom-2') as HTMLDivElement).style.display = 'flex';
-  }
+  // ngOnDestroy() {
+  //   (document.querySelector('.mdk-drawer.js-mdk-drawer.layout-mini__drawer') as HTMLDivElement).style.display = 'block';
+  //   (document.querySelector('.navbar.navbar-expand.navbar-light.border-bottom-2') as HTMLDivElement).style.display = 'flex';
+  // }
 
 }
