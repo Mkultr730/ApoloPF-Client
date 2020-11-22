@@ -19,12 +19,11 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.authService.user$.subscribe(user => {
-      this.lessons = this.lessonsService.getAll();
-      // user.Course?.get().then(course => {
-      //   const courseData = course.data() as Course;
-      //   this.lessons = this.lessonsService.getAll()
-      //   .pipe(map(lessons => lessons.filter(lesson => +lesson.year === courseData.grado)));
-      // });
+      user.Course?.get().then(course => {
+        const courseData = course.data() as Course;
+        this.lessons = this.lessonsService.getAll()
+          .pipe(map(lessons => lessons.filter(lesson => courseData.grado + '' == lesson.year)));
+      });
     });
   }
 }
