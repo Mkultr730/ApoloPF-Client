@@ -80,7 +80,7 @@
                     <div class="list-group-item p-3" *ngFor="let clase of user.courses; index as i">
                         <div *ngIf="(clase | students | async) as learners">
                             <div class="row align-items-start">
-                                <div *ngFor="let learner of learners; index as i;" class="col-md-3 mb-8pt mb-md-0">
+                                <div *ngFor="let learner of learners; index as i;" class="col-md-3 mb-8pt mb-md-0" style="margin-bottom: 1.5rem !important;">
                                     <div *ngIf="learner | userName | async as learnername" class="media align-items-center">
                                         <div class="media-left mr-12pt" *ngIf="learner| idStudent|async as learnerid">
                                             <a routerLink="{{learnerid}}" class="avatar avatar-sm">
