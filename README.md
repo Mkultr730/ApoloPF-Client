@@ -1,6 +1,19 @@
-# ApoloPFClient
+<p align="center">
+  <img src="src/assets/icons/logo_Apolo.svg" width="250" alt="icon"/>
+</p>
 
+# Apolo
+This is a web app which aim to implement the framework of UDL, **U**niversal **D**esign For **L**earning. This [web app](https://apolo-dua.web.app/) was build to allow teachers and students get in touch without need to be in the same space, it let to the students take a step into the subject *Mathematics* while the teacher keep tracking his class.
+
+## Technologies:
+    User auth: Firebase Auth
+    Database: Firestore
+    Hosting: Firebase
+    FrontEnd: Angular
+    
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.9.
+
+## Usage
 
 ## Development server
 
